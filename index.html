@@ -676,7 +676,22 @@ render=function(){
  }
  applyTheme43();
 };
-
-
+/* Navigation resilience: independent click handling and visible startup diagnostics. */
+(function(){
+ const nav=document.getElementById('nav');
+ const destinations={Home:'Headquarters',Standings:'Standings',Games:'Schedule',Media:'Media',Franchises:'Franchises',Playoffs:'Postseason',History:'History',Commissioner:'Commissioner'};
+ function warning(message){let el=document.getElementById('navigation-warning');if(!el){el=document.createElement('p');el.id='navigation-warning';el.setAttribute('role','alert');el.style.cssText='padding:12px;margin:10px 16px;background:#512b32;color:white;border:1px solid #f2a8a8;border-radius:8px';document.querySelector('header').append(el)}el.textContent='Navigation error: '+message+' (Your saved universe has not been changed.)'}
+ function resilientGo(target){try{moreOpen40=false;page=target;render();window.scrollTo(0,0)}catch(e){warning(e&&e.message||String(e));try{renderDock40()}catch(_){}}}
+ // Delegate clicks from the permanent nav container rather than relying on
+ // inline onclick attributes in buttons that are rebuilt on each render.
+ nav.addEventListener('click',function(event){
+  const button=event.target.closest('button');if(!button||!nav.contains(button))return;
+  event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
+  if(button.classList.contains('dock40-more')){try{moreOpen40=!moreOpen40;renderDock40()}catch(e){warning(e.message)}return}
+  const label=button.textContent.trim();if(destinations[label])resilientGo(destinations[label]);
+ },true);
+ document.addEventListener('click',function(event){const menu=event.target.closest('#more40');if(!menu)return;const button=event.target.closest('button');if(!button)return;event.preventDefault();event.stopPropagation();const target=destinations[button.textContent.trim()];if(target)resilientGo(target)},true);
+ try{renderDock40()}catch(e){warning(e.message)}
+})();
 render();
 </script></body></html>
