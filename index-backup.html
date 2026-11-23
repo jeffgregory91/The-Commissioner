@@ -1,0 +1,697 @@
+<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Commissioner</title><meta name="game-version" content="4.3.1"><style>.signals{border-top:1px solid #344257;margin-top:9px;padding-top:7px}.signal{display:inline-block;border:1px solid #526783;border-radius:5px;padding:4px 7px;margin:3px;font-size:12px}.positive{color:#83d6a6}.negative{color:#f1a2a2}</style><style>
+.upnext315,.finale315{border:1px solid #577997;border-radius:12px;padding:15px;background:linear-gradient(140deg,#203e5a,#132338);margin:14px 0}.eyebrow315{font-size:11px;letter-spacing:1.4px;color:#a5d5f4;font-weight:800}.versus315{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);align-items:center;gap:8px;margin:14px 0}.versus315>div{display:flex;flex-direction:column;gap:4px;min-width:0}.versus315>div:last-child{text-align:right;align-items:flex-end}.versus315 strong{font-size:23px;color:#fff}.versus315 small{color:#a6bad0}.versus315>span{color:#92a9c0;font-size:11px}.score315{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#102235;border-radius:8px;color:#b9d3e9;font-size:11px;font-weight:800;letter-spacing:.5px}.score315 strong{font-size:29px;color:#fff}.score315 small{font-size:12px;color:#a4b8cc}.teamstates315{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:9px;margin-top:14px;border-top:1px solid #3d526a;padding-top:12px}.teamstate315{background:#142539;border:1px solid #31445c;border-radius:9px;padding:10px}.identity-line315{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px}.state315{margin-top:7px;border-radius:5px;padding:6px 8px;font-size:12px;border-left:3px solid #b7a477;background:#293040;color:#e2d8b8}.state315.good315{border-color:#5ebf91;background:#163c37;color:#b9efce}.state315.bad315{border-color:#e78b8b;background:#442b38;color:#ffd2d2}.state315.major315{font-weight:800;padding:9px}.quiet315{display:block;margin-top:8px;color:#8fa6bc}.teamstate315 details{margin-top:8px;font-size:12px}.identity-grid315{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}.identity-tile315{background:#18293e;border:1px solid #344b62;border-radius:9px;padding:10px}.identity-name315{font-weight:800;color:#c4dffa;margin:8px 0 3px}.identity-tile315 small{color:#a7bcd0}.finale315 h2{margin:8px 0}.finalresult315 article{margin-top:10px}.finalcall315{border-top:1px solid #4a6279;margin-top:12px;padding-top:12px;color:#c6dbed;font-weight:600}
+</style><style>body{background:#101722;color:#dce6f2;font:15px system-ui;margin:0}header,main{max-width:1100px;margin:auto;padding:20px}header{border-bottom:1px solid #344257}h1,h2,h3{color:#fff}h1{letter-spacing:2px}button,select,input{background:#24364d;color:white;border:1px solid #435875;border-radius:6px;padding:10px;margin:4px;cursor:pointer}button:hover{background:#365475}button:disabled{opacity:.4}section{background:#192536;border:1px solid #304158;border-radius:10px;padding:16px;margin:12px 0}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:8px;border-bottom:1px solid #344257}small,p{color:#adbed1}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}.scroll{overflow:auto}strong{color:#e8b96d}nav{display:flex;flex-wrap:wrap}#advance{background:#326d94;font-weight:bold}</style><style>.logo{width:36px;height:36px;object-fit:contain;flex-shrink:0}.identity{display:inline-flex;align-items:center;gap:7px;border-left:3px solid var(--team);padding-left:6px}.match{display:flex;align-items:center;justify-content:space-between;gap:8px}.win{color:#83d6a6}.muted{opacity:.7}article{background:#111d2c;border-left:4px solid var(--team,#4b6280);padding:12px;margin:10px 0;border-radius:8px}article h3{margin:10px 0 4px}article p{margin:5px 0}.tabs{display:flex;position:sticky;top:0;background:#101722;z-index:1}.active{background:#326d94}.reveal{padding:12px;background:#24364d;border-radius:8px}button{min-height:44px}td,th{font-size:14px}@media(max-width:500px){header,main{padding:10px}h1{font-size:24px}td,th{padding:5px;font-size:12px}.logo{width:27px;height:27px}}</style><style>.bracket{display:grid;grid-template-columns:repeat(3,minmax(215px,1fr));gap:12px;overflow-x:auto}.bracket article{margin:12px 0}.bracket .match{flex-wrap:wrap}.bracket h4{color:#e8b96d}</style><style>header{padding-bottom:8px}h1{margin:5px 0;font-size:26px}#status{color:#a9bdd4;font-size:13px}nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:8px}nav button{margin:0;padding:7px 2px;font-size:12px}nav button.active{background:#326d94;border-color:#84b6da}#advance{width:100%;margin:10px 0 2px}main{padding-top:8px}section{padding:14px}section h2{font-size:18px;margin:0 0 12px}article h3{font-size:16px}details.panel{background:#192536;border:1px solid #304158;border-radius:10px;margin:10px 0;padding:13px}details.panel>summary{font-weight:650;cursor:pointer;color:#dce6f2}details.panel>section{border:0;padding:0;margin-bottom:0}details.panel>section>h2{display:none}.toolbar{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}.toolbar button{flex:1;margin:0}.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}select{max-width:100%} .pageintro{font-size:13px;margin:4px 0 12px} .hero{border-color:#527da3;background:#203349} @media(max-width:500px){header,main{padding:10px}section{padding:12px}nav button{font-size:11px} .identity{gap:4px}}</style><style>
+:root{color-scheme:dark;--ink:#e9f1fb;--muted:#9cafc5;--accent:#6eb7e9;--line:#31445c}body{line-height:1.48}header{background:linear-gradient(180deg,#17273b,#101722);border-bottom:1px solid var(--line)}header>small{letter-spacing:.16em;text-transform:uppercase;font-size:10px;color:#8ea9c6}h1{letter-spacing:.065em;font-weight:850}#status{margin-top:3px}nav{gap:6px}nav button{min-height:40px;border-radius:9px;background:#1b2c41;color:#c1d1e5}nav button.active{background:#25547b;color:white;box-shadow:inset 0 -3px #8ac6f3}#advance{background:#2875a9;min-height:46px;font-size:15px;box-shadow:0 5px 18px #0004}main{max-width:1000px}main>section{margin:12px 0;border-radius:12px;background:#172438;border:1px solid #304158}main>section h2{font-size:17px;letter-spacing:.01em;color:#f0f5ff}main>section:first-of-type{border-color:#527fa3}article{border-radius:10px}article h3{line-height:1.3}small,.pageintro{color:var(--muted)}.pageintro{margin:9px 2px 14px}table{font-variant-numeric:tabular-nums}th{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#9eb6d0}td{font-size:13px}td,th{padding:9px 7px}.scroll{overflow-x:auto}details.panel{border-color:#344d66;background:#182a40}details.panel>summary{padding:3px 0} .ux-eyebrow{font-size:10px;font-weight:750;letter-spacing:.15em;text-transform:uppercase;color:#85bde7;margin-bottom:5px}.ux-subtle{font-size:12px;color:#9eb0c6}.ux-highlight{border-color:#5684ad!important;background:linear-gradient(150deg,#203a55,#192b40)!important}.ux-muted{opacity:.89}.ux-pill{display:inline-block;border:1px solid #5a7896;border-radius:20px;padding:3px 8px;margin:3px;font-size:11px;color:#cfe1f6}.ux-compact>article:nth-of-type(n+5){display:none}.ux-compact.ux-expanded>article{display:block}.ux-more{width:100%;margin-top:8px}.ux-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.ux-toolbar h2{margin:0!important}@media(max-width:500px){header,main{padding:11px}main>section{margin:9px 0;padding:12px}nav{grid-template-columns:repeat(4,minmax(0,1fr))}nav button{font-size:11px;min-height:42px}table{min-width:460px}#advance{position:relative}}
+</style><style>.pregame-score312{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;padding:12px;border:1px solid #56738f;border-radius:8px;background:#20364d}.pregame-score312 span strong{font-size:12px;letter-spacing:.12em;color:#9dc4e8}.pregame-score312 span small{display:block;margin-top:3px}.pregame-score312>b{font-size:27px;color:#fff;font-variant-numeric:tabular-nums}.pregame-score312>b small{font-size:12px;color:#a9bfd4}.standings-playoff312{margin:18px 0;border:1px solid #344a64;border-radius:9px;background:#192536}.standings-playoff312>summary{padding:15px;cursor:pointer;font-weight:700;color:#dbe9fa}.standings-playoff312>section{margin:0;border:0}.expectations312 .record312{font-size:17px;color:#fff;font-variant-numeric:tabular-nums}.expectations312 .delta312{font-size:12px;color:#9fb3c8}.expectations312 p{line-height:1.7}</style><style>.next314{margin:14px 0;padding:15px;border:1px solid #5983a8;background:#20354d;border-radius:12px}.eyebrow314{font-size:11px;letter-spacing:.13em;color:#a6cbea;font-weight:800}.nextteams314{display:grid;gap:10px;margin:13px 0}.nextteams314>span:not(.versus314){display:flex;align-items:center;justify-content:space-between;gap:8px}.nextteams314 b{font-size:19px;color:#fff}.versus314{text-align:center;color:#96abc4;font-size:11px}.rating314{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #46627e;padding-top:10px;font-size:11px;letter-spacing:.07em}.rating314 strong{font-size:27px;color:#fff}.rating314 small{font-size:11px;color:#adc1d8}details.panel>summary{padding:6px 0}main>section.hero{border-color:#5e8eb5;background:#1b3047}</style><style>
+/* v3.17 final-whistle game carousel */
+.wrap317{margin-top:16px}.wrap317-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:10px 0}.wrap317-head h3{margin:0}.wrap317-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;padding:4px 2px 14px;scrollbar-width:thin}.wrap317-slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always}.wrap317-slide article{margin:0;height:100%;box-sizing:border-box}.wrap317-meta{padding:10px 12px;background:rgba(100,145,190,.12);border-radius:10px;margin-bottom:8px}.wrap317-teams{display:grid;grid-template-columns:1fr 1fr;gap:10px}.wrap317-team{min-width:0}.wrap317-team strong{display:block;font-size:1.15em;margin:4px 0}.wrap317-team small{display:block;opacity:.8}.wrap317-controls{display:flex;align-items:center;gap:10px}.wrap317-controls button{min-width:38px;padding:7px 11px}.wrap317-count{font-variant-numeric:tabular-nums;font-size:.9em;white-space:nowrap}.wrap317-note{opacity:.75;font-size:.85em;margin:4px 0 10px}.finale315 .finalresult315{display:none}.wrap317-slide .teamstates315{margin-top:10px}@media(min-width:760px){.wrap317-slide{flex-basis:min(100%,600px)}}
+</style><style id="mobile40">
+:root{--dock40:76px}html{scroll-behavior:smooth}body{padding-bottom:calc(var(--dock40) + env(safe-area-inset-bottom,0px) + 20px)!important}button,select,summary{touch-action:manipulation}button{transition:background-color .13s ease,transform .13s ease,border-color .13s ease}button:active{transform:scale(.975)}button:focus-visible,select:focus-visible{outline:2px solid #80c9ff;outline-offset:2px}
+header{position:relative!important}#nav{position:fixed!important;bottom:0!important;top:auto!important;left:0;right:0;z-index:1000;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px!important;padding:7px max(8px,env(safe-area-inset-left,0px)) calc(8px + env(safe-area-inset-bottom,0px))!important;background:rgba(11,20,34,.97)!important;border-top:1px solid #405773;box-shadow:0 -12px 32px #0006;overflow:visible!important;max-width:none!important;border-radius:0!important;backdrop-filter:blur(16px)}
+#nav .dock40-item{min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;background:transparent;border-radius:12px;color:#b6c7da;font-size:11px;font-weight:650;padding:4px 1px;white-space:nowrap}#nav .dock40-item.active{color:#fff;background:#24435f}#nav .dock40-item svg{width:21px;height:21px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}#nav .dock40-item:disabled{opacity:.4}#nav .dock40-more.active{background:#24435f}
+#more40{position:fixed;z-index:999;left:12px;right:12px;bottom:calc(76px + env(safe-area-inset-bottom,0px));padding:12px;background:#15283e;border:1px solid #42607d;border-radius:16px;box-shadow:0 10px 45px #000b}#more40[hidden]{display:none!important}#more40 button{display:block;width:100%;text-align:left;padding:13px;margin:3px 0;font-size:15px}#more40 .more40-label{font-size:11px;letter-spacing:.11em;color:#a8c2dc;margin:3px 8px 9px}
+#main{max-width:1100px;margin:auto}#main>section{margin-bottom:16px}#main>section>h2{font-size:clamp(19px,5vw,24px);line-height:1.2}#main article{margin-bottom:9px}#main .pageintro{margin-top:4px}#main .wrap317-track{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}#main .wrap317-slide{scroll-snap-align:start}#main .wrap317-controls button{min-width:44px;min-height:44px}
+.mobile40-title{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9fc9e9;margin:0 0 10px}.mobile40-quick{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0 9px}.mobile40-quick button{flex:0 0 auto;min-height:40px;padding:8px 14px;border-radius:24px}.mobile40-compact{border:1px solid #354c64;border-radius:12px;padding:12px;margin:10px 0;background:#16283b}.mobile40-compact summary{font-weight:700;cursor:pointer;padding:4px}.mobile40-compact section{margin-top:12px}.mobile40-compact>summary::marker{color:#8dc4ef}
+@media(min-width:850px){#nav{left:50%;right:auto;transform:translateX(-50%);width:min(620px,100%);border:1px solid #405773;border-bottom:0;border-radius:18px 18px 0 0!important}#more40{left:50%;right:auto;transform:translateX(-50%);width:min(550px,calc(100% - 24px))}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}button{transition:none}}
+</style><style>
+.browse41-tools{position:relative;background:#17283b;border:1px solid #35516b;border-radius:14px;padding:12px;margin:10px 0 16px;display:grid;gap:8px}.browse41-tools label{font-size:12px;font-weight:750;color:#c7d9ec}.browse41-tools input{width:100%;min-height:44px;border-radius:10px;border:1px solid #526d86;background:#0b1827;color:#fff;padding:0 12px;font-size:16px}.browse41-tools input:focus{outline:2px solid #7dbbff;outline-offset:1px}.browse41-tools #browse41-count{font-size:12px;color:#b5cce0}.browse41-actions{display:flex;gap:8px}.browse41-actions button{flex:1;min-height:40px;border-radius:9px;background:#28415a;color:#fff;border:1px solid #42617c}.browse41-fold{margin:9px 0;border:1px solid #314c64;border-radius:12px;padding:8px}.browse41-fold>summary{cursor:pointer;padding:9px;font-weight:750}.browse41-fold>section{margin:8px 0 0}[data-browse41][hidden]{display:none!important}#nav .dock40-item{touch-action:manipulation}#more40[hidden]{display:none!important}
+</style><style>
+.identity42-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:10px}.identity42-card{padding:13px;border:1px solid #34475d;border-radius:13px;background:#172538}.identity42-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:9px}.identity42-card p{margin:5px 0 0;opacity:.78;font-size:.89rem}.identity42-story{display:block;margin-top:10px;padding:7px 9px;border-radius:7px;background:#29425b;color:#d9edff;font-weight:700}.identity42-change{padding:11px 12px;border-left:3px solid #6bb9e6;margin:7px 0;background:#1c2c40;border-radius:7px}.identity42-change p{margin:4px 0 0}.identity42-change small{opacity:.7}.identity42-context{font-size:.85rem;color:#b6d7f4}
+</style><style id="style43">
+/* Team colors remain accents, not page backgrounds. */
+.identity{border-left-width:4px!important;border-left-color:var(--team)!important;max-width:100%;flex-wrap:wrap}
+.seed43{display:inline-flex;align-items:center;white-space:nowrap;border:1px solid #7894af80;border-radius:5px;padding:2px 5px;margin-left:3px;font:750 10px/1.35 system-ui;letter-spacing:.02em;background:#6688aa20;color:var(--ink,#e9f1fb);vertical-align:middle}
+.seed43.final{background:#477aab3b;border-color:#76a9d6}
+.theme43{font-size:12px;min-height:36px;padding:7px 10px;margin:6px 0;border-radius:20px;float:right;background:var(--panel43,#253950);color:var(--ink,#e9f1fb);border:1px solid var(--line,#344257)}
+.team43-accent{border-left:3px solid var(--team,#6584a0)}
+html[data-theme43="light"]{color-scheme:light;--ink:#1b2d42;--muted:#536980;--accent:#195f96;--line:#cbd7e3;--panel43:#fff}
+html[data-theme43="light"] body{background:#f1f5fa;color:#1b2d42}
+html[data-theme43="light"] header{background:linear-gradient(180deg,#e7eff7,#f4f7fb);border-color:#cbd7e3}
+html[data-theme43="light"] h1,html[data-theme43="light"] h2,html[data-theme43="light"] h3{color:#162c42}
+html[data-theme43="light"] section,html[data-theme43="light"] article,html[data-theme43="light"] .card,html[data-theme43="light"] details{background:#fff;color:#1b2d42;border-color:#d3dfe9}
+html[data-theme43="light"] p,html[data-theme43="light"] small,html[data-theme43="light"] .pageintro{color:#4b6076}
+html[data-theme43="light"] strong{color:#865016}
+html[data-theme43="light"] td,html[data-theme43="light"] th{border-color:#d7e1eb;color:#1b2d42}
+html[data-theme43="light"] button,html[data-theme43="light"] select,html[data-theme43="light"] input{background:#e4edf6;color:#1b2d42;border-color:#b9cbdc}
+html[data-theme43="light"] button.active,html[data-theme43="light"] #advance{background:#236a9e;color:#fff}
+html[data-theme43="light"] nav,html[data-theme43="light"] .tabs{background:#eef3f9}
+html[data-theme43="light"] nav button{background:#e1ebf5;color:#28435b}
+html[data-theme43="light"] nav button.active{background:#246b9e;color:#fff}
+html[data-theme43="light"] .seed43{background:#e5eef8;color:#234c72;border-color:#b5c9dd}
+html[data-theme43="light"] .seed43.final{background:#d5e8fa}
+html[data-theme43="light"] .theme43{background:#fff;color:#1b2d42}
+@media(max-width:600px){.seed43{font-size:9px;padding:2px 4px}.theme43{float:none;display:inline-block;margin:5px 0}}
+</style></head><body><header><small>FOOTBALL UNIVERSE / COMMISSIONER MODE</small><h1>THE COMMISSIONER</h1><div id="status"></div><button id="advance" onclick="advance()">Advance</button><nav id="nav"></nav></header><main id="main"></main><script>
+const groups=['AFC East','AFC North','AFC South','AFC West','NFC East','NFC North','NFC South','NFC West'];const names=['Buffalo Bills|Miami Dolphins|New England Patriots|New York Jets','Baltimore Ravens|Cincinnati Bengals|Cleveland Browns|Pittsburgh Steelers','Houston Texans|Indianapolis Colts|Jacksonville Jaguars|Tennessee Titans','Denver Broncos|Kansas City Chiefs|Las Vegas Raiders|Los Angeles Chargers','Dallas Cowboys|New York Giants|Philadelphia Eagles|Washington Commanders','Chicago Bears|Detroit Lions|Green Bay Packers|Minnesota Vikings','Atlanta Falcons|Carolina Panthers|New Orleans Saints|Tampa Bay Buccaneers','Arizona Cardinals|Los Angeles Rams|San Francisco 49ers|Seattle Seahawks'];const key='commissioner-v1';let s;try{s=JSON.parse(localStorage.getItem(key))}catch(e){};let page='Headquarters',inspect=false;const tiers=['Terrible','Poor','Average','Good','Elite'];function rnd(){s.seed=(Math.imul(s.seed,1664525)+1013904223)>>>0;return s.seed/4294967296}function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}function save(){try{localStorage.setItem(key,JSON.stringify(s))}catch(e){document.getElementById('status').textContent+=' • Save unavailable; keep this tab open'}}function team(i){return s.teams.find(t=>t.id===i)}function clamp(x){return Math.max(0,Math.min(4,x))}function esc(x){return String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function nm(i){return esc(team(i).name)}function pct(t){return t.w+t.l?t.w/(t.w+t.l):0}function reset(t){Object.assign(t,{w:0,l:0,dw:0,dl:0,cw:0,cl:0,st:0,sum:0,n:0,pw:0,seed:0,div:false,conf:false,champ:false})}function schedule(){let a=shuffle(s.teams.map(t=>t.id)),weeks=[];if(a.length%2)a.push(-1);for(let r=0;r<Math.min(s.games,a.length-1);r++){let games=[];for(let j=0;j<a.length/2;j++){let x=a[j],y=a[a.length-1-j];if(x!==-1&&y!==-1)games.push([x,y])}weeks.push(games);a.splice(1,0,a.pop())}return weeks}function start(){s.week=0;s.phase='regular';s.results=[];s.news=['A new season begins. Every franchise has a fresh opportunity.'];s.teams.forEach(reset);s.schedule=schedule();s.bracket=[];s.pred=rankHistorical().slice(0,5).map(t=>t.id);s.last=[]}function rankHistorical(){return [...s.teams].sort((a,b)=>(b.history.at(-1)?.wins||0)-(a.history.at(-1)?.wins||0))}if(!s){s={season:1,seed:crypto.getRandomValues(new Uint32Array(1))[0],games:17,slots:6,impact:5,teams:names.flatMap((g,d)=>g.split('|').map((name,j)=>({id:d*4+j,name,d,tier:2,history:[]}))),archive:[],rivals:{},log:[]};start();save()}
+function record(a,b,post=false){let x=team(a),y=team(b),p=winProbability37(x,y);let w=rnd()<p?x:y,l=w===x?y:x;if(post){w.pw++;let k=[a,b].sort((a,b)=>a-b).join(':');s.rivals[k]=(s.rivals[k]||0)+2}else{w.w++;l.l++;w.st=Math.max(0,w.st)+1;l.st=Math.min(0,l.st)-1;if(w.d===l.d){w.dw++;l.dl++}if(Math.floor(w.d/4)===Math.floor(l.d/4)){w.cw++;l.cl++}}let g={a,b,w:w.id,l:l.id,post,stage:post?s.phase:"regular",week:s.week,wr:w.w+"–"+w.l,lr:l.w+"–"+l.l};scoreGame(g,w,l);s.results.push(g);return g}function ratio(a,b){return a+b?a/(a+b):0}function sortTeams(ts){let tie=new Map(shuffle(ts.map(t=>t.id)).map((id,i)=>[id,i]));return [...ts].sort((a,b)=>{let v=pct(b)-pct(a);if(v)return v;let h=s.results.filter(g=>!g.post&&[g.a,g.b].includes(a.id)&&[g.a,g.b].includes(b.id));v=h.filter(g=>g.w===b.id).length-h.filter(g=>g.w===a.id).length;return v||ratio(b.dw,b.dl)-ratio(a.dw,a.dl)||ratio(b.cw,b.cl)-ratio(a.cw,a.cl)||tie.get(a.id)-tie.get(b.id)})}function displayRank(ts){return [...ts].sort((a,b)=>pct(b)-pct(a)||ratio(b.dw,b.dl)-ratio(a.dw,a.dl)||a.id-b.id)}function playoffs(){s.phase='wild';s.pools=[0,1].map(c=>{let leaders=[];for(let d=c*4;d<c*4+4;d++){let t=sortTeams(s.teams.filter(t=>t.d===d))[0];if(t){t.div=true;leaders.push(t)}}let other=sortTeams(s.teams.filter(t=>Math.floor(t.d/4)===c&&!t.div));let pool=sortTeams(leaders).concat(other).slice(0,s.slots);pool.forEach((t,i)=>t.seed=i+1);return pool.map(t=>t.id)});s.news.unshift('The playoff field is set. Division champions occupy the top seeds.');}function round(){let stage=s.phase;s.last=[];if(stage==='super'){let g=record(s.pools[0][0],s.pools[1][0],true);s.last=[g];team(g.w).champ=true;s.news.unshift(nm(g.w)+' wins Super Bowl '+s.season+'!');finish();return}let next=[];for(let pool of s.pools){pool=[...pool].sort((a,b)=>team(a).seed-team(b).seed);let winners=[];if(stage==='wild'&&s.slots===6)winners.push(...pool.splice(0,2));if(stage==='wild'&&s.slots===7)winners.push(pool.shift());while(pool.length>1){let g=record(pool.shift(),pool.pop(),true);s.last.push(g);winners.push(g.w)}if(pool.length)winners.push(pool[0]);next.push(winners)}s.pools=next;s.news.unshift(stage+' round: '+s.last.map(g=>nm(g.w)+' advances').join('; '));if(next[0].length===1){next.forEach(p=>team(p[0]).conf=true);s.phase='super'}else s.phase=next[0].length===2?'conference':'division'}
+function finish(){let ranked=sortTeams(s.teams);s.order=ranked.map(t=>t.id);for(let t of s.teams){let opp=s.results.filter(g=>!g.post&&(g.a===t.id||g.b===t.id)).map(g=>pct(team(g.a===t.id?g.b:g.a)));let sos=opp.reduce((a,b)=>a+b,0)/(opp.length||1);let prestige=t.w+100*t.champ+40*t.conf+15*t.div+10*(t.seed>0)+15*t.pw+25*(t.l===0);let score=30*pct(t)+35*(t.champ?1:t.conf?.8:t.pw>=2?.6:t.pw===1?.4:t.seed?.2:0)+25*(t.sum/(t.n||1))/4+10*sos;t.history.push({season:s.season,name:t.name,wins:t.w,losses:t.l,champ:t.champ,conf:t.conf,div:t.div,play:!!t.seed,pw:t.pw,prestige,score,tier:t.sum/(t.n||1),sos,scored:analytics(t.id)});}s.archive.push({season:s.season,champ:s.teams.find(t=>t.champ).id,rows:ranked.map(t=>({name:t.name,w:t.w,l:t.l,d:t.d}))});for(let d=0;d<8;d++){let a=ranked.filter(t=>t.d===d);if(a.length>1&&Math.abs(a[0].w-a[1].w)<=1){let k=[a[0].id,a[1].id].sort((a,b)=>a-b).join(':');s.rivals[k]=(s.rivals[k]||0)+1}}s.phase='review'}function advance(){if(s.phase==='regular'){s.week++;s.last=s.schedule[s.week-1].map(g=>record(...g));for(let t of s.teams){t.sum+=t.tier;t.n++;let r=rnd(),delta=r<.0025?2:r<.025?1:r<.0275?-2:r<.05?-1:0;let old=t.tier;t.tier=clamp(t.tier+delta);if(old!==t.tier&&rnd()<.35)s.news.unshift(nm(t.id)+(delta>0?' reportedly gaining confidence behind the scenes.':' faces questions about organizational direction.'))}let hot=displayRank(s.teams)[0];s.news.unshift('Week '+s.week+': '+nm(hot.id)+' leads the league at '+hot.w+'–'+hot.l+'.');if(s.week===s.schedule.length)playoffs()}else if(['wild','division','conference','super'].includes(s.phase))round();else if(s.phase==='review'){s.phase='owners';s.proposals=shuffle([{label:'Change playoff field to 8 per conference',k:'slots',v:8},{label:'Restore 6-team conference playoffs',k:'slots',v:6},{label:'Increase tier impact to 7 points',k:'impact',v:7},{label:'Reduce tier impact to 3 points',k:'impact',v:3},{label:'Shorten schedule to 16 games',k:'games',v:16},{label:'Restore 17-game schedule',k:'games',v:17}]).slice(0,3).map(p=>({...p,yes:s.teams.filter(()=>rnd()<.5).length,done:false}));}else if(s.phase==='owners'){s.phase='development';s.dev=[];for(let t of s.teams){let pos=s.order.indexOf(t.id)/s.order.length,p=pos>=.75?.45:pos>=.5?.30:pos>=.25?.20:.10;let old=t.tier;if(rnd()<p)t.tier=clamp(t.tier+(rnd()<.12?2:1));else if(rnd()<.20)t.tier=clamp(t.tier-1);if(rnd()<.025){t.tier=clamp(t.tier+(rnd()<.5?1:-1));s.dev.push(nm(t.id)+' announces new ownership.')}if(old!==t.tier&&rnd()<.4)s.dev.push(nm(t.id)+' is drawing renewed attention from insiders.')}if(!s.dev.length)s.dev.push('A quiet offseason: no major public reports.')}else if(s.phase==='development'){s.phase='preseason';s.pred=rankHistorical().map(t=>({id:t.id,value:pct(t)*12+t.tier*.5+rnd()*3})).sort((a,b)=>b.value-a.value).slice(0,5).map(x=>x.id)}else if(s.phase==='preseason'){s.season++;start()}save();render()}
+const phases={regular:'Next week',wild:'Wild card round',division:'Divisional round',conference:'Conference championships',super:'Super Bowl',review:'Ownership meetings',owners:'Run rebuilding lottery',development:'Preseason report',preseason:'Start next season'};const pages=['Headquarters','Standings','Schedule','Media','Franchises','Postseason','History','Commissioner'];function go(p){page=p;render()}function table(headers,rows){return '<div class="scroll"><table><tr>'+headers.map(x=>'<th>'+x+'</th>').join('')+'</tr>'+rows.map(r=>'<tr>'+r.map(x=>'<td>'+x+'</td>').join('')+'</tr>').join('')+'</table></div>'}function sec(h,b){return '<section><h2>'+h+'</h2>'+b+'</section>'}function results(gs){return table(['Winner','Loser'],gs.map(g=>[nm(g.w),nm(g.l)]))}function standings(ts){return table(['Team','W','L','Div','Streak'],displayRank(ts).map(t=>[esc(t.name),t.w,t.l,t.dw+'–'+t.dl,t.st>0?'W'+t.st:t.st<0?'L'+(-t.st):'—']))}function totals(t){return t.history.reduce((a,h)=>a+h.prestige,0)}function historical(){let all=s.teams.flatMap(t=>t.history.map(h=>({...h,id:t.id})));let dyn=[];for(let t of s.teams)for(let n of [5,10])for(let i=0;i+n<=t.history.length;i++){let a=t.history.slice(i,i+n);dyn.push([t.name,n,a[0].season,a.at(-1).season,a.reduce((x,h)=>x+h.prestige,0),a.filter(h=>h.champ).length])}return sec('Franchise prestige',table(['Franchise','Points','Titles','Points / season'],[...s.teams].sort((a,b)=>totals(b)-totals(a)).map(t=>[esc(t.name),totals(t),t.history.filter(h=>h.champ).length,(totals(t)/(t.history.length||1)).toFixed(1)])))+sec('Greatest single-season teams',table(['Team','Season','Record','Champion','Greatness','Avg tier'],all.sort((a,b)=>b.score-a.score).slice(0,50).map(h=>[esc(h.name),h.season,h.wins+'–'+h.losses,h.champ?'Yes':'No',h.score.toFixed(1),h.tier.toFixed(2)])))+sec('Dynasty rankings',table(['Franchise','Window','Seasons','Prestige','Titles'],dyn.sort((a,b)=>b[4]/b[1]-a[4]/a[1]).slice(0,40).map(x=>[esc(x[0]),x[1]+' years',x[2]+'–'+x[3],x[4],x[5]])))+sec('Season archives',s.archive.slice().reverse().map(a=>'<details><summary>Season '+a.season+' • '+nm(a.champ)+'</summary>'+table(['Team','W','L'],a.rows.map(r=>[esc(r.name),r.w,r.l]))+'</details>').join(''))+sec('25-season parity challenge',`<p>${s.archive.length}/25 seasons completed. Unique champions: ${new Set(s.archive.map(a=>a.champ)).size}. Suggested goal: at least 12 distinct champions in the first 25 seasons.</p>`)}
+function vote(i,override){let p=s.proposals[i];if(p.done)return;p.done=true;if(override||p.yes>=Math.ceil(s.teams.length*.75)){s[p.k]=p.v;p.out='Adopted'+(override?' by override':'');}else p.out='Rejected';s.log.push('Season '+s.season+': '+p.label+' — '+p.out);save();render()}function intervene(){let t=team(+document.getElementById('target').value),v=document.getElementById('action').value;t.tier=clamp(v==='up'?t.tier+1:v==='down'?t.tier-1:+v);s.log.push('Season '+s.season+': intervention for '+t.name);save();render()}function renameTeam(){if(s.phase!=='owners')return;let t=team(+document.getElementById('target').value),n=prompt('New franchise name',t.name);if(n&&n.trim())t.name=n.trim();save();render()}function realign(){if(s.phase!=='owners')return;let t=team(+document.getElementById('target').value),d=+prompt('Division number 0–7: '+groups.map((g,i)=>i+' '+g).join(', '),t.d);if(Number.isInteger(d)&&d>=0&&d<8&&s.teams.filter(x=>x.d===t.d).length>1)t.d=d;save();render()}function expand(){if(s.phase!=='owners')return;let n=prompt('New franchise name');if(!n)return;let d=+prompt('Division number 0–7: '+groups.join(', '),'0');if(!Number.isInteger(d)||d<0||d>7)return; s.teams.push({id:Math.max(...s.teams.map(t=>t.id))+1,name:n,d,tier:2,history:[]});save();render()}
+function render(){document.getElementById('status').textContent='Season '+s.season+' • '+(s.phase==='regular'?'Week '+s.week+' / '+s.schedule.length:s.phase.toUpperCase())+' • Autosave';document.getElementById('advance').textContent=phases[s.phase];document.getElementById('nav').innerHTML=pages.map(p=>`<button onclick="go('${p}')">${p}</button>`).join('');let h='',rank=displayRank(s.teams),top=rank[0];if(page==='Headquarters'){h=sec('League headlines',s.news.slice(0,5).map(n=>'<p>'+n+'</p>').join(''))+sec('Latest results',s.last.length?results(s.last):'<p>Awaiting kickoff.</p>')+sec('League leaders',standings(rank.slice(0,8)));if(s.phase==='owners'||s.phase==='development'||s.phase==='preseason')h+=sec('Offseason report',s.phase==='owners'?'Visit Commissioner to review proposals.':s.phase==='development'?s.dev.join('<br>'):'Preseason contenders: '+s.pred.map(nm).join(', '))}if(page==='Standings')h='<div class="grid">'+groups.map((g,i)=>sec(g,standings(s.teams.filter(t=>t.d===i)))).join('')+'</div>';if(page==='Schedule')h=s.schedule.map((gs,i)=>sec('Week '+(i+1),table(['Team','Opponent','Result'],gs.map(([a,b])=>{let g=s.results.find(g=>!g.post&&g.a===a&&g.b===b);return[nm(a),nm(b),g?nm(g.w)+' wins':'Scheduled']})))).join('');if(page==='Media'){let hot=[...s.teams].sort((a,b)=>b.st-a.st)[0];h=sec('The football desk',`<p><strong>Marcus Reed | Statistical view</strong><br>${nm(top.id)} owns a ${top.w}–${top.l} record. Schedule quality will help distinguish real contenders.</p><p><strong>Vince Callahan | Hot take</strong><br>${hot.st>0?nm(hot.id)+' is the hottest story with '+hot.st+' consecutive wins.':'No winning streak has emerged yet.'}</p><p><strong>Claire Bennett | Historical view</strong><br>${s.archive.length?nm([...s.teams].sort((a,b)=>totals(b)-totals(a))[0].id)+' leads the all-time prestige race.':'Every franchise is writing its first chapter.'}</p>`)+sec('Power rankings',standings(rank))+sec('Preseason picks',s.pred.map(nm).join(', '))+sec('Emerging rivalries',table(['Matchup','Intensity'],Object.entries(s.rivals).sort((a,b)=>b[1]-a[1]).map(([k,v])=>[k.split(':').map(Number).map(nm).join(' vs '),v])))+sec('News wire',s.news.slice(0,20).map(n=>'<p>'+n+'</p>').join(''))}if(page==='Franchises')h=s.teams.map(t=>sec(esc(t.name),`<p>${groups[t.d]} • Prestige ${totals(t)} • Championships ${t.history.filter(h=>h.champ).length}</p>`+table(['Season','W–L','Prestige','Greatness'],t.history.map(h=>[h.season,h.wins+'–'+h.losses,h.prestige,h.score.toFixed(1)])))).join('');if(page==='Postseason')h=sec('Playoff picture',table(['Conference','Current contenders'],[0,1].map(c=>[c?'NFC':'AFC', (s.phase==='regular'?rank.filter(t=>Math.floor(t.d/4)===c).slice(0,s.slots).map(t=>t.id):s.pools?.[c]||[]).map(nm).join(', ')])))+sec('Postseason results',results(s.results.filter(g=>g.post)));if(page==='History')h=historical();if(page==='Commissioner'){h=sec('League rules',`<p>${s.games} games • ${s.slots} playoff teams per conference • ${s.impact*2.4}% per tier difference (12 points at default; 10–90% bounds) • No home advantage; morale can influence future results.</p>`)+sec('Franchise intervention',`<select id="target">${s.teams.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join('')}</select><select id="action"><option value="up">Improve one tier</option><option value="down">Decline one tier</option>${tiers.map((t,i)=>`<option value="${i}">Set ${t}</option>`).join('')}</select><button onclick="intervene()">Apply</button><button onclick="inspect=!inspect;render()">${inspect?'Hide':'Inspect'} tiers</button>${inspect?table(['Team','Tier'],s.teams.map(t=>[esc(t.name),tiers[t.tier]])):''}`);if(s.phase==='owners')h+=sec('Ownership proposals',s.proposals.map((p,i)=>`<p>${p.label} — ${p.yes} yes / ${s.teams.length-p.yes} no. ${p.done?p.out:`<button onclick="vote(${i},false)">Accept vote</button><button onclick="vote(${i},true)">Override / adopt</button>`}</p>`).join('')+'<button onclick="renameTeam()">Relocate selected team</button><button onclick="realign()">Realign selected team</button><button onclick="expand()">Expand league</button>');h+=sec('Intervention log',s.log.map(esc).join('<br>')||'No interventions.');}document.getElementById('main').innerHTML=h}
+const codes='buf mia ne nyj bal cin cle pit hou ind jax ten den kc lv lac dal nyg phi wsh chi det gb min atl car no tb ari lar sf sea'.split(' '), colors='00338d 008e97 002244 125740 241773 fb4f14 311d00 ffb612 03202f 002c5f 006778 4b92db fb4f14 e31837 a5acaf 0080c6 869397 0b2265 004c54 5a1414 0b162a 0076b6 203731 4f2683 a71930 0085ca d3bc8d d50a0a 97233f 003594 aa0000 69be28'.split(' ');
+let view='Division', reveal=0, pending=false; const originalRender=render, originalAdvance=advance;
+function logo(t){return t.id<32?`<img class="logo" src="https://a.espncdn.com/i/teamlogos/nfl/500/${codes[t.id]}.png" alt="" onerror="this.style.display='none'">`:''}
+function identity(t){return `<span class="identity" style="--team:#${colors[t.id]||'657a91'}">${logo(t)}${esc(t.name)}</span>`}
+function standings(ts){return table(['Team','W','L','Div','Streak'],displayRank(ts).map(t=>[identity(t),t.w,t.l,t.dw+'–'+t.dl,t.st>0?'W'+t.st:t.st<0?'L'+(-t.st):'—']))}
+function story(g){let w=team(g.w),l=team(g.l), priorW=w.w-1,priorL=l.l-1;let rival=s.rivals[[w.id,l.id].sort((a,b)=>a-b).join(':')]||0; if(g.post)return [w.name+' survives the postseason test',l.name+' is eliminated; the road to a title continues for the winner.'];if(s.week>=4&&priorW<w.l&&l.w>priorL+1)return [w.name+' shocks a contender',`Entering at ${priorW}–${w.l}, the winner disrupts ${l.name}'s campaign. A reminder that records do not decide games.`];if(w.st>=3)return [w.name+' stretches its streak to '+w.st,`At ${w.w}–${w.l}, the pressure is shifting to its rivals. Can anyone interrupt this run?`];if(l.st<=-3)return [l.name+' faces mounting pressure',`${-l.st} straight losses have left the franchise searching for answers. ${w.name} capitalizes.`];if(rival>=2||w.d===l.d)return [w.name+' claims rivalry bragging rights',`A direct blow to ${l.name}. ${w.d===l.d?'The division race now has a new head-to-head result.':'Their shared history gains another chapter.'}`];if(s.week>=3&&l.l===1)return [w.name+' ends an unbeaten run',`${l.name} finally tastes defeat after ${l.w} wins. The league has one fewer undefeated contender.`];return [w.name+' takes the opportunity',`${w.w}–${w.l} versus ${l.w}–${l.l} after the game. ${w.w>w.l?'The winner is building a winning campaign.':w.w===w.l?'The winner is back at even footing.':'The winner takes a step toward recovery.'}`]}
+function gameCards(gs){return gs.map(g=>{let [a,b]=story(g);return `<article style="--team:#${colors[g.w]||'657a91'}"><div class="match">${identity(team(g.w))}<b class="win">${g.wr||team(g.w).w+"–"+team(g.w).l} · WIN</b></div><div class="match muted">${identity(team(g.l))}<span>${g.lr||team(g.l).w+"–"+team(g.l).l} · LOSS</span></div><h3>${esc(a)}</h3><p>${esc(b)}</p></article>`}).join('')}
+function showNext(all=false){reveal=all?s.last.length:Math.min(reveal+1,s.last.length);pending=reveal<s.last.length;save();render()}
+function setView(v){view=v;render()}
+advance=function(){if(pending){showNext(true);return}let oldPhase=s.phase, before=new Map(s.teams.map(t=>[t.id,t.tier]));originalAdvance();if(oldPhase==='owners'){s.publicDev=s.teams.map(t=>({id:t.id,delta:t.tier-(before.get(t.id)??t.tier)})).filter(x=>x.delta!==0);save()}if(oldPhase==='regular'||['wild','division','conference','super'].includes(oldPhase)){reveal=0;pending=s.last.length>0;}render()};
+render=function(){originalRender();let main=document.getElementById('main'),btn=document.getElementById('advance');if(pending){btn.textContent='Reveal all results'; /* Keep Sunday Live pending, but allow viewing other screens. */}if(page==='Standings'){main.innerHTML=`<div class="tabs">${['Division','Conference','League'].map(v=>`<button class="${view===v?'active':''}" onclick="setView('${v}')">${v}</button>`).join('')}</div>`+(view==='Division'?'<div class="grid">'+groups.map((g,i)=>sec(g,standings(s.teams.filter(t=>t.d===i)))).join('')+'</div>':view==='Conference'?[0,1].map(c=>sec(c?'NFC':'AFC',standings(s.teams.filter(t=>Math.floor(t.d/4)===c)))).join(''):sec('Entire league',standings(s.teams)));}if(page==='Headquarters'){let gs=s.last||[], shown=pending?gs.slice(0,reveal):gs;let stages=['review','owners','development','preseason'];let off='';if(!pending&&stages.includes(s.phase)){if(s.phase==='review')off=sec('Championship edition',identity(s.teams.find(t=>t.champ)||s.teams[0])+'<p>Season complete. Ownership meetings and the rebuilding lottery are next.</p>');if(s.phase==='owners')off=sec(' owners meeting'.trim(),(s.proposals||[]).map(p=>`<article><h3>${esc(p.label)}</h3><p>${p.yes} owners in favor · ${s.teams.length-p.yes} opposed · ${p.done?esc(p.out):'Awaiting decision'}</p></article>`).join('')+`<button onclick="go('Commissioner')">Review proposals</button>`);if(['development','preseason'].includes(s.phase)){let d=s.publicDev||[];off=sec('Offseason development wire',`<h3 class="win">Lottery / development winners</h3>${d.filter(x=>x.delta>0).map(x=>`<article>${identity(team(x.id))}<p>${x.delta>1?'Major organizational breakthrough reported.':'Insiders report a meaningful step forward.'}</p></article>`).join('')||'<p>No confirmed net improvements.</p>'}<h3>Organizations under pressure</h3>${d.filter(x=>x.delta<0).map(x=>`<article>${identity(team(x.id))}<p>Reports suggest the organization may be losing ground.</p></article>`).join('')||'<p>No confirmed net declines.</p>'}<p>${(s.dev||[]).filter(x=>x.includes('ownership')).join('<br>')}</p>`);if(s.phase==='preseason')off+=sec('Preseason watchlist',(s.pred||[]).map((id,i)=>`<p>${i+1}. ${identity(team(id))}</p>`).join(''));}}let controls=pending?`<div class="reveal"><p>${reveal} of ${gs.length} games revealed</p><button onclick="showNext()">Reveal next matchup</button><button onclick="showNext(true)">Reveal all</button>${gs[reveal]?'<p>Up next: '+identity(team(gs[reveal].a))+' vs '+identity(team(gs[reveal].b))+'</p>':''}</div>`:'';main.innerHTML=off+sec(pending?'Game day live':'Latest results & storylines',controls+gameCards([...shown].reverse())+(gs.length?'':'<p>Awaiting kickoff.</p>'))+(!pending?sec('League leaders',standings(displayRank(s.teams).slice(0,8)))+sec('News wire',s.news.slice(0,8).map(n=>'<p>'+n+'</p>').join('')):'');}if(page==='Media'){main.innerHTML=sec('Around the league',gameCards(s.last||[]))+main.innerHTML;}/* Pending Sunday Live must not disable global navigation. */};
+
+// V3 extensions, additive save migration
+s.events ||= []; s.picks ||= []; s.awards ||= []; s.tournaments ||= [];
+const v2advance=advance,v2render=render;
+function wire(t,kind,body){s.events.unshift({season:s.season,week:s.week,id:t.id,kind,body});}
+function eventCards(es){return es.map(e=>`<article>${identity(team(e.id))}<small> S${e.season} · W${e.week}</small><h3>${esc(e.kind)}</h3><p>${esc(e.body)}</p></article>`).join('')||'<p>No developments reported yet.</p>'}
+function picks(){let r=displayRank(s.teams), a=[r[0], [...r].sort((a,b)=>b.st-a.st)[0], [...r].sort((a,b)=>totals(b)-totals(a))[0]];return a.map((t,i)=>({season:s.season,analyst:['Marcus Reed','Vince Callahan','Claire Bennett'][i],id:t.id}));}
+advance=function(){let phase=s.phase,wasPending=pending, before=s.teams.map(t=>({id:t.id,tier:t.tier,st:t.st}));v2advance();if(wasPending)return;if(phase==='regular') {for(let t of s.teams){let old=before.find(x=>x.id===t.id);t.momentum=Math.max(-2,Math.min(2,Math.trunc(t.st/3)));if(t.st===3)wire(t,'Momentum building','Three straight wins have changed the mood inside the organization.');if(t.st===-3)wire(t,'Locker room tension','Three consecutive defeats have put leadership under scrutiny.');if(t.st<=-5&&t.pressure>=Math.max(5,7+(t.patience??2)-Math.max(-2,Math.min(2,-gap(t))))&&t.fired!==s.season&&rnd()<(s.coachReview310?.045:.12)){t.fired=s.season;t.tier=clamp(t.tier+(rnd()<.55?1:-1));wire(t,'Coach dismissed','Ownership has opted for a change in direction. The interim regime faces an uncertain road.');}if(old.tier!==t.tier)wire(t,t.tier>old.tier?'Organizational breakthrough':'Setback behind the scenes',t.tier>old.tier?'Insiders report renewed confidence; the results will tell whether it lasts.':'Questions are emerging about preparation and cohesion.');if(old.st<=-3&&t.st===1)wire(t,'Turning point?','A long losing streak is over. The franchise has a chance to reset.');if(s.week===Math.ceil(s.schedule.length/2)){let prev=t.history.at(-1);if(prev&&t.w/(t.w+t.l)>prev.wins/(prev.wins+prev.losses)+.25)wire(t,'Midseason resurgence','The club is dramatically ahead of last season’s pace.');else if(prev&&t.w/(t.w+t.l)<prev.wins/(prev.wins+prev.losses)-.25)wire(t,'Midseason regression','Last season’s standard now looks difficult to repeat.');}}if(s.week===1&&!s.picks.some(p=>p.season===s.season))s.picks.push(...picks());}if(phase==='super'){let r=displayRank(s.teams), best=[...r].sort((a,b)=>b.history.at(-1).score-a.history.at(-1).score)[0],rise=[...r].sort((a,b)=>(b.w-(b.history.at(-2)?.wins??b.w))-(a.w-(a.history.at(-2)?.wins??a.w)))[0];s.awards.push({season:s.season,best:best.id,regular:r[0].id,rise:rise.id});}if(phase==='preseason')s.teams.forEach(t=>t.momentum=0);save();render()};
+function bracket(){let seeded=s.teams.filter(t=>t.seed),stages=['wild','division','conference','super'];let label={wild:'Wild card',division:'Divisional',conference:'Conference final',super:'Super Bowl'};if(!seeded.length)return '<p>Bracket opens when the regular season ends.</p>'+[0,1].map(c=>sec(c?'NFC race':'AFC race',standings(displayRank(s.teams.filter(t=>Math.floor(t.d/4)===c)).slice(0,s.slots)))).join('');let out='';for(let c of [0,1]){let ts=seeded.filter(t=>Math.floor(t.d/4)===c).sort((a,b)=>a.seed-b.seed);out+=`<h3>${c?'NFC':'AFC'}</h3><div class="bracket">`+stages.slice(0,3).map(stage=>{let games=s.results.filter(g=>g.post&&g.stage===stage&&Math.floor(team(g.a).d/4)===c);let pool=stage==='wild'?ts.map(t=>t.id):s.phase===stage?s.pools[c]:[];let byes=stage==='wild'?(s.slots===6?2:s.slots===7?1:0):0;let bye=stage==='wild'?pool.slice(0,byes):[];if(!games.length&&pool.length){pool=pool.slice(byes).sort((a,b)=>team(a).seed-team(b).seed);while(pool.length>1)games.push({a:pool.shift(),b:pool.pop()});}return `<div><h4>${label[stage]}</h4>`+bye.map(id=>`<article>${identity(team(id))}<small> #${team(id).seed} · BYE</small></article>`).join('')+(games.map(g=>`<article>${[g.a,g.b].map(id=>`<div class="match ${g.w===id?'win':''}">${identity(team(id))}<small>#${team(id).seed} · ${team(id).w}–${team(id).l} ${g.w===id?' ✓':''}</small></div>`).join('')}</article>`).join('')||'<p>Awaiting qualifiers</p>')+'</div>'}).join('')+'</div>';}let final=s.results.find(g=>g.post&&g.stage==='super');return out+sec('Super Bowl',final?gameCards([final]):s.phase==='super'?s.pools.flat().map(id=>identity(team(id))).join(' vs '):'Awaiting conference champions');}
+function tournament(){let all=s.teams.flatMap(t=>t.history.map(h=>({...h,id:t.id}))).sort((a,b)=>b.score-a.score).slice(0,32);if(all.length<2)return;let seed=(Date.now()>>>0), random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};let n=2**Math.floor(Math.log2(all.length)),pool=all.slice(0,n),rounds=[];while(pool.length>1){let games=[],next=[];while(pool.length>1){let a=pool.shift(),b=pool.pop(),w=random()<.5+(a.tier-b.tier)*s.impact/100?a:b;games.push({a,b,w});next.push(w)}rounds.push(games);pool=next;}s.tournaments.unshift({champ:pool[0],rounds});save();render()}
+function archiveExtras(){return sec('Annual honors',s.awards.slice().reverse().map(a=>`<p>Season ${a.season} · Best team: ${nm(a.best)} · Regular-season leader: ${nm(a.regular)} · Improvement award: ${nm(a.rise)}</p>`).join('')||'Awards begin with the next completed season.')+sec('Battle of the eras','<p>Exhibition only. Top historical teams compete without changing official records.</p><button onclick="tournament()">Run historical tournament</button>'+ (s.tournaments[0]?`<h3>Winner: ${esc(s.tournaments[0].champ.name)} · S${s.tournaments[0].champ.season}</h3>`+s.tournaments[0].rounds.map((r,i)=>`<h4>Round ${i+1}</h4>`+r.map(g=>`<p>${esc(g.a.name)} S${g.a.season} vs ${esc(g.b.name)} S${g.b.season} → ${esc(g.w.name)} S${g.w.season}</p>`).join('')).join(''):''))}
+render=function(){v2render();let main=document.getElementById('main');if(pending)return;if(page==='Headquarters')main.innerHTML+=sec('Inside the league · latest developments',eventCards(s.events.filter(e=>e.season===s.season&&e.week>=s.week-2).slice(0,16)));if(page==='Postseason')main.innerHTML=sec('Playoff bracket · reseeded each round',bracket())+main.innerHTML;if(page==='Media')main.innerHTML+=sec('League developments',eventCards(s.events.slice(0,40)))+sec('Analyst championship picks',table(['Season','Analyst','Pick','Outcome'],s.picks.slice().reverse().map(p=>[p.season,p.analyst,nm(p.id),s.archive.find(a=>a.season===p.season)?s.archive.find(a=>a.season===p.season).champ===p.id?'Correct':'Miss':'Pending'])));if(page==='History')main.innerHTML+=archiveExtras();if(page==='Franchises')main.innerHTML+=sec('Persistent franchise stories',eventCards(s.events.slice(0,100)));};
+
+// V3.8: snapshot-based narrative and portable saves
+const old31Advance=advance, old31Render=render, old31Story=story, old31Cards=gameCards;
+const intensity=['','Minor','Growing','Significant','Major','Transformational'];
+function stablePick(a,g,salt=0){return a[((g.w*31+g.l*17+(g.week||0)*13+(g.season||s.season)*7+salt)>>>0)%a.length]}
+function snapshot(g,before){let w=team(g.w),l=team(g.l),a=before.get(w.id),b=before.get(l.id);g.season=s.season;g.context=[w,l].map(t=>{let pre=before.get(t.id);let events=s.events.filter(e=>e.id===t.id&&e.season===s.season&&e.week===s.week);return {id:t.id,st:t.st,prev:pre?.st||0,events:events.map(e=>({kind:e.kind,body:e.body,degree:e.kind==='Coach dismissed'?4:e.kind.includes('breakthrough')||e.kind.includes('Setback')?Math.abs(t.tier-(pre?.tier??t.tier))>1?5:3:e.kind.includes('Midseason')?3:2})),degree:Math.min(5,Math.abs(t.st)),prevSeason:t.history.filter(h=>h.season<s.season).at(-1)?.wins??null}});let c=g.context[0],d=g.context[1];let base=old31Story(g);let lines=[];if(g.post)lines.push(stablePick([`${w.name} takes another step toward the title.`,`${l.name}'s championship bid ends here.`,`${w.name} delivers when the stakes are highest.`],g));else {if(c.prev<=-3)lines.push(`${w.name} finally interrupts a ${-c.prev}-game slide; whether this is a reset or a brief reprieve remains open.`);if(d.prev>=3)lines.push(`${l.name}'s ${d.prev}-game winning run is over. The loss tests its recent confidence.`);if(c.st>=3)lines.push(stablePick([`${w.name} has won ${c.st} straight, and belief is spreading through the organization.`,`The league is taking notice of ${w.name}'s ${c.st}-game run.`,`Momentum is becoming a defining feature of ${w.name}'s campaign (${c.st} consecutive wins).`],g));if(d.st<=-3)lines.push(`${l.name} has dropped ${-d.st} straight. ${d.st<=-5?'Pressure on leadership is becoming difficult to ignore.':'Questions about cohesion are beginning to surface.'}`);if(!lines.length)lines.push(stablePick([`${w.name} banks an important victory while ${l.name} must regroup.`,`${l.name} misses an opportunity to gain ground; ${w.name} moves forward.`,`${w.name} takes this week's honors, but the longer-term picture remains unsettled.`,`${w.name} adds a win to its campaign; the next few weeks will reveal its significance.`],g));}g.summary=[base[0],lines.join(' ')];}
+advance=function(){let before=new Map(s.teams.map(t=>[t.id,{st:t.st,tier:t.tier,pressure:t.pressure||0}])),phase=s.phase,was=pending;old31Advance();if(!was&&['regular','wild','division','conference','super'].includes(phase)){for(let g of s.last)snapshot(g,before);save();render();}};
+story=function(g){return g.summary||old31Story(g)};
+gameCards=function(gs){return gs.map(g=>{let html=old31Cards([g]);let notes=(g.context||[]).map(c=>{let tags=[];if(c.degree>=2)tags.push(`<span class="signal ${c.st>0?'positive':'negative'}">${intensity[c.degree]} ${c.st>0?'momentum':'pressure'}</span>`);for(let e of c.events)tags.push(`<span class="signal">${esc(e.kind)} · ${intensity[e.degree]}</span><p>${esc(e.body)}</p>`);return tags.length?`<div class="signals"><small>${nm(c.id)}</small><div>${tags.join(' ')}</div></div>`:''}).join('');return html.replace('</article>',notes+'</article>')}).join('')};
+function exportUniverse(){let blob=new Blob([JSON.stringify(s)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`commissioner-season-${s.season}-backup.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
+async function importUniverse(file){if(!file)return;try{let x=JSON.parse(await file.text());if(!x||!Array.isArray(x.teams)||!Array.isArray(x.archive)||!Array.isArray(x.results)||!Array.isArray(x.schedule)||!Number.isInteger(x.seed)||!Number.isInteger(x.season)||!x.teams.every(t=>Number.isInteger(t.id)&&Array.isArray(t.history)&&typeof t.name==='string')||!['regular','wild','division','conference','super','review','owners','development','preseason'].includes(x.phase))throw Error('Invalid universe');if(!confirm('Replace this universe with the backup from Season '+x.season+'? Export your current universe first if needed.'))return;for(let k of ['events','picks','awards','tournaments'])x[k] ||= [];localStorage.setItem(key,JSON.stringify(x));location.reload()}catch(e){alert('Import failed: '+e.message)}}
+async function checkUpdate(){let el=document.getElementById('updateStatus');try{let r=await fetch(location.pathname+'?check='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error();let t=await r.text();let version=t.match(/name="game-version" content="([^"]+)"/)?.[1];el.textContent=version?version==='3.8'?'You are running the published version.':'Published version '+version+' is available. Export your save before refreshing.':'Version could not be identified.'}catch(e){el.textContent='Unable to check for updates.'}}
+render=function(){old31Render();let status=document.getElementById('status');status.innerHTML+=' · v3.8';if(page==='Commissioner'){document.getElementById('main').innerHTML=sec('Universe backup & updates',`<p>Version 3.8 · Export before changing devices or updating.</p><button onclick="exportUniverse()">Export universe</button><label>Import backup <input type="file" accept=".json,application/json" onchange="importUniverse(this.files[0])"></label><button onclick="checkUpdate()">Check for updates</button><p id="updateStatus"></p>`)+document.getElementById('main').innerHTML;}};
+
+
+// V3.8: scores and cumulative organizational pressure. Separate deterministic score stream.
+function scoreGame(g,w,l){let seed=(s.seed^Math.imul(w.id+1,2654435761)^Math.imul(l.id+1,1597334677))>>>0;let r=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};let env=r(),center=env<.15?15:env<.55?24:env<.75?35:env<.90?23:8+r()*38;let draw=c=>{let target=Math.max(0,Math.min(63,c+(r()+r()+r()-1.5)*23));let scores=[0,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,59,63];return scores.reduce((a,b)=>Math.abs(b-target)<Math.abs(a-target)?b:a)};let a=draw(center+3),b=draw(env>=.75&&env<.90?center-17:center-3);if(a===b){a+=3;g.ot=true}g.ws=Math.max(a,b);g.ls=Math.min(a,b);g.margin=g.ws-g.ls;if(g.post)return;for(let [t,sign] of [[w,1],[l,-1]]){let impact=g.margin<=3? .6:g.margin<=8?1:g.margin<=16?2:g.margin<=24?3:4;t.morale=Math.max(-5,Math.min(5,(t.morale||0)*.72+sign*impact*.65));t.pressure=Math.max(0,Math.min(12,(t.pressure||0)+(sign<0?impact:-2)));if(sign<0&&t.pressure>=8+(t.patience??2)*.5&&t.lastResponseSeason!==s.season&&t.w+t.l>=5&&r()<.22){t.lastResponseSeason=s.season;let roll=r();if(roll<.22&&t.fired!==s.season){t.fired=s.season;t.pressure=3;t.tier=clamp(t.tier+(r()<.55?1:-1));wire(t,'Coach dismissed','Ownership replaces the coaching regime after sustained pressure.')}else if(roll<.48){t.pressure=4;t.tier=clamp(t.tier+(r()<.55?1:-1));wire(t,'GM dismissed','Ownership changes the front office direction; the long-term effect remains uncertain.')}else if(roll<.78){t.pressure=6;wire(t,'Ownership ultimatum','Leadership retains its jobs but faces a public demand for improvement.')}else{t.pressure=5;t.morale=Math.max(-5,t.morale-1);wire(t,'Media firestorm','Intense public criticism is testing the organization.')}}else if(sign<0&&g.margin>=25)wire(t,'Internal crisis','A heavy defeat has intensified internal scrutiny.');else if(sign>0&&g.margin>=25)wire(t,'Dominant breakthrough','A commanding victory has lifted confidence across the organization.');}g.morale=[w.morale,l.morale];}
+const scoreCards=gameCards, scoreSnapshot=snapshot;
+snapshot=function(g,before){scoreSnapshot(g,before);if(g.margin==null)return;let w=nm(g.w),l=nm(g.l),m=g.margin;let options=m<=3?[`${w} survives a nail-biter.`,`${l} suffers a narrow defeat; there is little evidence of a collapse.`]:m<=8?[`${w} edges a competitive contest.`,`${l} remains within reach but leaves without the win.`]:m<=16?[`${w} earns a convincing victory.`,`${l} has questions to answer after a decisive defeat.`]:m<=24?[`${w} delivers a commanding performance.`,`${l} faces renewed scrutiny after a heavy loss.`]:[`${w} makes a statement with a ${m}-point demolition.`,`${l} endures a damaging blowout; leadership pressure may intensify.`];g.summary=[stablePick(options,g,19),g.summary[1]];};
+gameCards=function(gs){return gs.map(g=>{let h=scoreCards([g]);if(g.ws==null)return h;h=h.replace(' · WIN',` · <strong style="font-size:22px">${g.ws}</strong> · WIN`).replace(' · LOSS',` · <strong style="font-size:22px">${g.ls}</strong> · LOSS`);let labels=(g.morale||[]).map((v,i)=>Math.abs(v)<.9?'':`<span class="signal ${v>0?'positive':'negative'}">${esc(nm(i?g.l:g.w))}: ${Math.abs(v)>=3.8?'Severe':Math.abs(v)>=2?'Significant':'Mild'} ${v>0?'confidence':'unrest'}</span>`).join('');return h.replace('</article>',labels+'</article>')}).join('')};
+
+
+// V3.8: scoring analytics and expectation-adjusted pressure.
+function analytics(id){let a={n:0,pf:0,pa:0,cw:0,cl:0,bw:0,bl:0};for(let g of s.results){if(g.post||!Number.isFinite(g.ws)||!Number.isFinite(g.ls)||![g.w,g.l].includes(id))continue;let win=g.w===id;a.n++;a.pf+=win?g.ws:g.ls;a.pa+=win?g.ls:g.ws;let m=g.ws-g.ls;if(m<=8)a[win?'cw':'cl']++;if(m>=25)a[win?'bw':'bl']++;}return a}
+function expectation(t,season=s.season){if(t.expect?.season===season)return t.expect;let hist=t.history.filter(h=>h.season<season).slice(-3), rate=hist.length?hist.reduce((a,h)=>a+h.wins/(h.wins+h.losses||1),0)/hist.length:.5;let dev=(s.publicDev||[]).find(d=>d.id===t.id)?.delta||0;let target=Math.max(.25,Math.min(.82,rate*.75+.125+Math.max(-2,Math.min(2,dev))*.035));let label=target>=.68?'Title contender':target>=.56?'Playoff hopeful':target>=.43?'Competitive': 'Rebuilding';t.expect={season,target,label};t.patience??=(Math.imul(t.id+7,2654435761)>>>0)%5;return t.expect}
+function gap(t){return t.w-expectation(t).target*(t.w+t.l)}
+function hotSeat(t){let p=t.pressure||0;return p>=9?'Critical':p>=6?'Serious':p>=3?'Growing':'Stable'}
+for(let t of s.teams)expectation(t);
+const baseStart34=start;start=function(){baseStart34();for(let t of s.teams){expectation(t);t.pressure=Math.max(0,(t.pressure||0)*.25);t.morale=(t.morale||0)*.25;}save()};
+const baseScore34=scoreGame;scoreGame=function(g,w,l){let before=[w.pressure||0,l.pressure||0];baseScore34(g,w,l);if(g.post)return;for(let [i,t] of [w,l].entries()){let e=expectation(t), diff=gap(t), adjustment=i===1?Math.max(-1.5,Math.min(2,-diff*.45))+(2-t.patience)*.35:Math.max(-1,Math.min(1,-diff*.25));t.pressure=Math.max(0,Math.min(12,(t.pressure||0)+adjustment));if(before[i]<6&&t.pressure>=6)wire(t,'Coaching hot seat',`${t.name} is facing growing scrutiny relative to its ${e.label.toLowerCase()} expectations.`);if(before[i]>=6&&t.pressure<6)wire(t,'Pressure easing','Recent results have bought leadership some breathing room.');}g.expectationContext=[w,l].map(t=>({id:t.id,label:expectation(t).label,gap:gap(t),seat:hotSeat(t)}));};
+const baseSnapshot34=snapshot;snapshot=function(g,b){baseSnapshot34(g,b);if(!g.expectationContext)return;let lines=[];for(let c of g.expectationContext){let n=team(c.id).name;if(c.gap>=2)lines.push(stablePick([`${n} is running well ahead of preseason expectations.`,`${n} is forcing a rethink of its preseason outlook.`],g,c.id));else if(c.gap<=-2)lines.push(stablePick([`${n} is falling short of the standard set before kickoff.`,`${n} has ground to recover against its preseason ambitions.`],g,c.id));if(c.seat==='Critical'||c.seat==='Serious')lines.push(`Leadership scrutiny at ${n} remains ${c.seat.toLowerCase()}.`);}if(lines.length)g.summary[1]+=' '+lines.join(' ');};
+// Use expectation and ownership tolerance in the existing dismissal threshold.
+const baseCards34=gameCards;gameCards=function(gs){return gs.map(g=>{let h=baseCards34([g]);let c=(g.expectationContext||[]).map(x=>`<p><small>${nm(x.id)} · ${esc(x.label)} · ${x.gap>=2?'Ahead of pace':x.gap<=-2?'Behind pace':'Near expectations'} · Coaching: ${esc(x.seat)}</small></p>`).join('');return h.replace('</article>',c+'</article>')}).join('')};
+function scoringTable(ts){return table(['Team','Scored games','PF/G','PA/G','Diff','Close W–L','Blowout W–L'],ts.map(t=>[t,analytics(t.id)]).sort((a,b)=>(b[1].n?(b[1].pf-b[1].pa)/b[1].n:-999)-(a[1].n?(a[1].pf-a[1].pa)/a[1].n:-999)).map(([t,a])=>[identity(t),a.n,a.n?(a.pf/a.n).toFixed(1):'—',a.n?(a.pa/a.n).toFixed(1):'—',a.n?(a.pf-a.pa>0?'+':'')+(a.pf-a.pa):'—',a.n?a.cw+'–'+a.cl:'—',a.n?a.bw+'–'+a.bl:'—']))}
+function expectationTable(){return table(['Franchise','Preseason outlook','Target wins*','Pace','Ownership','Hot seat'],displayRank(s.teams).map(t=>{let e=expectation(t);return [identity(t),e.label,(e.target*s.games).toFixed(1),gap(t)>=2?'Ahead':gap(t)<=-2?'Behind':'On track',['Ruthless','Demanding','Balanced','Patient','Very patient'][t.patience],hotSeat(t)]}))}
+const finish34=finish;finish=function(){finish34();for(let t of s.teams){let h=t.history.at(-1);h.scoring=analytics(t.id);h.expectation={...expectation(t)};h.expectationGap=gap(t);}save()};
+const render34=render;render=function(){render34();if(pending)return;let m=document.getElementById('main');if(page==='Standings'||page==='Media'){m.innerHTML+=sec('Beyond the record','<p>Regular season only. Close games: margin ≤ 8; blowouts: margin ≥ 25. Older unscored games excluded.</p>'+scoringTable(s.teams));}if(page==='Franchises'||page==='Media'){m.innerHTML+=sec('Expectations & coaching pressure','<p>*Indicative preseason target, not a guarantee. Existing seasons receive a reconstructed outlook.</p>'+expectationTable());}if(page==='Headquarters'){let hot=s.teams.filter(t=>gap(t)<=-2||hotSeat(t)==='Critical').sort((a,b)=>gap(a)-gap(b)).slice(0,5);let rising=s.teams.filter(t=>gap(t)>=2).sort((a,b)=>gap(b)-gap(a)).slice(0,5);m.innerHTML+=sec('Expectation watch',hot.concat(rising).map(t=>`<article>${identity(t)}<p>${expectation(t).label} · ${gap(t)>=2?'Exceeding expectations':gap(t)<=-2?'Falling behind':'Leadership under scrutiny'} · Coaching: ${hotSeat(t)}</p></article>`).join('')||'<p>No major deviations yet.</p>');}if(page==='History'){let rows=s.teams.flatMap(t=>t.history.filter(h=>h.scoring?.n).map(h=>[esc(h.name),h.season,h.scoring.n,h.scoring.pf-h.scoring.pa,((h.scoring.pf-h.scoring.pa)/h.scoring.n).toFixed(1)]));m.innerHTML+=sec('Historical scoring dominance',table(['Team','Season','Scored games','Diff','Diff/G'],rows.sort((a,b)=>Number(b[4])-Number(a[4])).slice(0,50)));}};
+
+// V3.8 Sunday experience — persistent reveal state and pregame desk.
+const sundayAdvance=advance,sundayRender=render,sundayReveal=showNext;
+if(s.sunday?.pending && s.last.length){reveal=Math.min(s.sunday.reveal||0,s.last.length);pending=reveal<s.last.length;}
+function sundaySave(){s.sunday={pending,reveal};save()}
+function matchupValue(a,b){let x=team(a),y=team(b);return 4*(pct(x)+pct(y))+ (x.d===y.d?2:0)+Math.min(3,s.rivals[[a,b].sort((a,b)=>a-b).join(':')]||0)+ (s.week>=12?Math.max(0,2-Math.abs(x.w-y.w)):0)}
+function upcoming(){return [...(s.schedule[s.week]||[])].sort((a,b)=>matchupValue(...a)-matchupValue(...b))}
+function forecast(a,b){let x=team(a),y=team(b),ax=analytics(a),ay=analytics(b);let reed=(pct(x)-pct(y))+(ax.n&&ay.n?((ax.pf-ax.pa)/ax.n-(ay.pf-ay.pa)/ay.n)/50:0)>=0?x:y;let v=x.st>=y.st?x:y;return `<p><strong>Marcus Reed:</strong> ${nm(reed.id)} — record and scoring profile.<br><strong>Vince Callahan:</strong> ${nm(v.id)} — recent form.</p>`}
+function previewGame(g,featured){let [a,b]=g,x=team(a),y=team(b),r=s.rivals[[a,b].sort((a,b)=>a-b).join(':')]||0;let notes=[];if(x.d===y.d)notes.push('Divisional stakes: a direct opportunity to gain ground.');if(r>=2)notes.push('History adds an edge to this rivalry.');for(let t of [x,y]){if(hotSeat(t)!=='Stable')notes.push(`${t.name}: ${hotSeat(t).toLowerCase()} coaching pressure.`);if(Math.abs(t.st)>=3)notes.push(`${t.name} enters on a ${Math.abs(t.st)}-game ${t.st>0?'winning':'losing'} run.`)}if(!notes.length)notes.push('An opportunity to build confidence and establish direction.');return `<article><small>${featured?'PRIME TIME · GAME OF THE WEEK':'MATCHUP TO WATCH'}</small><div class="match">${identity(x)} <b>${x.w}–${x.l}</b></div><div class="match">${identity(y)} <b>${y.w}–${y.l}</b></div><p>${esc(notes.join(' '))}</p>${forecast(a,b)}</article>`}
+function raceReport(){let left=s.schedule.length-s.week;return [0,1].map(c=>{let ts=s.teams.filter(t=>Math.floor(t.d/4)===c),rank=displayRank(ts),cut=rank[Math.min(s.slots,rank.length)-1];return `<h3>${c?'NFC':'AFC'} playoff race</h3><p>Record-based race watch (division winners and tiebreakers may change seeding).</p>`+table(['Team','Record','Race watch'],rank.filter((t,i)=>i<s.slots+3||t.w+left<cut.w).map((t,i)=>[identity(t),t.w+'–'+t.l,t.w+left<cut.w?'Behind current cutoff even if unbeaten':t.w>cut.w+left?'Above current cutoff on wins':t.w>=cut.w?'At or above cutoff':`${cut.w-t.w} wins behind cutoff`]))}).join('')}
+function aftermath(){let gs=s.last||[];if(!gs.length)return '';let scored=gs.filter(g=>Number.isFinite(g.ws)&&Number.isFinite(g.ls)),wide=[...scored].sort((a,b)=>(b.ws-b.ls)-(a.ws-a.ls))[0],close=[...scored].sort((a,b)=>(a.ws-a.ls)-(b.ws-b.ls))[0];let lines=[];if(wide)lines.push(`<p><strong>Statement win:</strong> ${nm(wide.w)} over ${nm(wide.l)}, ${wide.ws}–${wide.ls}.</p>`);if(close&&close!==wide)lines.push(`<p><strong>Fine margins:</strong> ${nm(close.w)} edges ${nm(close.l)}, ${close.ws}–${close.ls}.</p>`);let events=s.events.filter(e=>e.season===s.season&&e.week===s.week);if(!gs[0].post)lines.push(eventCards(events.slice(0,8)));return sec('Postgame desk',lines.join('')||'<p>The round is complete.</p>')}
+advance=function(){if(!pending&&s.phase==='regular'){let order=upcoming();s.schedule[s.week]=order; }sundayAdvance();sundaySave();render()};
+showNext=function(all=false){sundayReveal(all);sundaySave();render()};
+function quickSunday(){if(!pending)advance();if(pending)showNext(true)}
+render=function(){sundayRender();let m=document.getElementById('main'),btn=document.getElementById('advance');if(page!=='Headquarters')return;if(pending){let n=s.last.length,remaining=s.last[reveal],windowName=reveal===n-1?'Prime time':reveal<Math.ceil(n/2)?'Early window':'Late window';btn.textContent='Reveal remaining games';m.innerHTML=sec('Sunday live · '+windowName,`<p>${reveal} of ${n} results revealed</p><progress max="${n}" value="${reveal}" style="width:100%"></progress>${remaining?'<p>Next: '+identity(team(remaining.a))+' vs '+identity(team(remaining.b))+'</p>':''}<button onclick="showNext()">Reveal next game</button><button onclick="showNext(true)">Reveal remaining games</button>`)+sec('Live results · newest first',gameCards(s.last.slice(0,reveal).reverse())||'<p>Kickoff is here.</p>');return;}if(s.phase==='regular'){let gs=upcoming();btn.textContent='Kick off Week '+(s.week+1);let featured=gs.slice(-3).reverse();m.innerHTML=sec('Pregame desk · Week '+(s.week+1),featured.map((g,i)=>previewGame(g,i===0)).join('')+'<button onclick="advance()">Kick off game day</button><button onclick="quickSunday()">Quick simulate week</button>')+(s.week?aftermath():'')+m.innerHTML;if(s.week>=10)m.innerHTML+=sec('Playoff race watch',raceReport());}else if(s.last.length)m.innerHTML=aftermath()+m.innerHTML;};
+
+
+// 3.8 presentation layer only; no changes to saved simulation state.
+let scheduleWeek=null, franchiseId=null, standingsMode='Records';
+function panel(title,body){return `<details class="panel"><summary>${title}</summary>${body}</details>`}
+function linkTab(p,label=p){return `<button onclick="go('${p}')">${label}</button>`}
+function selectWeek(v){scheduleWeek=Number(v);render()}
+function selectFranchise(v){franchiseId=Number(v);render()}
+function setStandingsMode(v){standingsMode=v;render()}
+const uxRender=render;
+render=function(){uxRender();let m=document.getElementById('main'),nav=document.getElementById('nav');nav.querySelectorAll('button').forEach(b=>{let name=b.textContent;b.classList.toggle('active',name===page);if(name===page)b.setAttribute('aria-current','page');b.textContent=({Headquarters:'Home',Commissioner:'Commish',Postseason:'Playoffs'})[name]||name;});if(pending)return;
+let sections=[...m.querySelectorAll(':scope > section')];let title=x=>x.querySelector('h2')?.textContent||'';let get=n=>sections.find(x=>title(x)===n)?.outerHTML||'';let fold=n=>get(n)?panel(n,get(n)):'';let intro=t=>`<p class="pageintro">${t}</p>`;
+if(page==='Headquarters'){let off=sections.filter(x=>/Championship edition|owners meeting|Offseason development wire|Preseason watchlist/.test(title(x))).map(x=>x.outerHTML).join('');let pre=sections.find(x=>title(x).startsWith('Pregame desk'));if(pre){let articles=[...pre.querySelectorAll('article')];pre.classList.add('hero');if(articles.length>1){let d=document.createElement('details');d.className='panel';d.innerHTML='<summary>Other featured matchups</summary>';articles.slice(1).forEach(a=>d.appendChild(a));articles[0].after(d);} }m.innerHTML=intro('Your weekly briefing · advance the universe or explore the league.')+off+(pre?.outerHTML||'')+get('Postgame desk')+get('Expectation watch')+fold('Latest results & storylines')+sec('Explore the league',linkTab('Standings','Standings')+linkTab('Schedule','All results')+linkTab('Media','News & analysis')+linkTab('Postseason','Playoff race'));}
+if(page==='Standings'){let controls=`<div class="toolbar">${['Records','Scoring'].map(v=>`<button class="${standingsMode===v?'active':''}" onclick="setStandingsMode('${v}')">${v}</button>`).join('')}</div>`;m.innerHTML=intro('League position and performance. Switch to scoring for point differential and close-game records.')+controls+(standingsMode==='Scoring'?get('Beyond the record'):m.innerHTML.replace(get('Beyond the record'),''));}
+if(page==='Schedule'){let w=Math.max(1,Math.min(s.schedule.length,scheduleWeek??(s.week||1)));let gs=s.schedule[w-1]||[],played=s.results.filter(g=>!g.post&&g.week===w);let upcomingGames=gs.filter(([a,b])=>!played.some(g=>(g.a===a&&g.b===b)||(g.a===b&&g.b===a)));m.innerHTML=intro('Browse completed games and upcoming matchups by week.')+`<div class="toolbar"><button ${w===1?'disabled':''} onclick="selectWeek(${w-1})">‹ Previous</button><select aria-label="Week" onchange="selectWeek(this.value)">${s.schedule.map((_,i)=>`<option ${i+1===w?'selected':''} value="${i+1}">Week ${i+1}</option>`).join('')}</select><button ${w===s.schedule.length?'disabled':''} onclick="selectWeek(${w+1})">Next ›</button></div>`+sec('Week '+w,gameCards([...played].reverse())+upcomingGames.map(([a,b])=>`<article>${identity(team(a))}<p>vs</p>${identity(team(b))}</article>`).join(''));}
+if(page==='Media'){m.innerHTML=intro('Analyst opinions, organizational news and the stories shaping the league.')+get('The football desk')+get('League developments')+fold('Analyst championship picks')+fold('Preseason picks')+fold('Emerging rivalries')+fold('News wire');}
+if(page==='Franchises'){let t=s.teams.find(t=>t.id===franchiseId)||s.teams[0];let e=expectation(t);m.innerHTML=intro('Explore one organization at a time.')+`<select aria-label="Franchise" onchange="selectFranchise(this.value)">${s.teams.map(x=>`<option value="${x.id}" ${x.id===t.id?'selected':''}>${esc(x.name)}</option>`).join('')}</select>`+sec('Franchise profile',identity(t)+`<h3>${t.w}–${t.l} · ${esc(e.label)}</h3><p>${gap(t)>=2?'Ahead of expectations':gap(t)<=-2?'Behind expectations':'Near expectations'} · Coaching: ${hotSeat(t)}</p><p>Ownership: ${['Ruthless','Demanding','Balanced','Patient','Very patient'][t.patience]} · Prestige ${totals(t)} · Titles ${t.history.filter(h=>h.champ).length}</p>`+scoringTable([t]))+sec('Recent developments',eventCards(s.events.filter(e=>e.id===t.id).slice(0,12)))+panel('Season history',get(t.name))+fold('Expectations & coaching pressure');}
+if(page==='Postseason'){m.innerHTML=intro('The road to the championship.')+(s.phase==='regular'?sec('Playoff race watch',raceReport()):get('Playoff bracket · reseeded each round'))+fold('Postseason results');}
+if(page==='History'){m.innerHTML=intro('The league’s permanent record.')+get('Season archives')+['Franchise prestige','Greatest single-season teams','Dynasty rankings','Historical scoring dominance','Annual honors','Battle of the eras','25-season parity challenge'].map(fold).join('');}
+if(page==='Commissioner'){m.innerHTML=intro('League governance, interventions and universe management.')+get('Ownership proposals')+get('Universe backup & updates')+get('League rules')+fold('Franchise intervention')+fold('Intervention log');}
+};
+
+
+function effective38(t){let value=t.tier*.65,weight=.65;let hs=t.history.filter(h=>h.season<s.season).slice(-3).reverse();hs.forEach((h,i)=>{let w=[.2,.1,.05][i],rate=h.wins/(h.wins+h.losses||1),a=h.scored,margin=a?.n?(a.pf-a.pa)/a.n:0;let quality=a?.n?rate*.65+Math.max(0,Math.min(1,.5+margin/35))*.35:rate;quality=Math.max(0,Math.min(1,quality+(h.sos??.5)*.15-.075));value+=w*quality*4;weight+=w});return (value+(1-weight)*t.tier)}
+function winProbability37(x,y){return Math.max(.10,Math.min(.90,.5+(effective38(x)-effective38(y))*(s.impact??5)*.030+((x.momentum||0)-(y.momentum||0))*.004+((x.morale||0)-(y.morale||0))*.003))}
+const snap37=snapshot;
+snapshot=function(g,b){snap37(g,b);let w=team(g.w),l=team(g.l),m=g.margin??0,c=g.context||[], candidates=[];let add=(key,weight,title,body)=>candidates.push({key,weight,title,body});let pick=(a,k)=>stablePick(a,g,k);
+if(g.post){g.summary=[`${w.name} advances on the biggest stage`,`${l.name}'s postseason ends${m?` in a ${m}-point defeat`:''}. ${g.stage==='super'?w.name+' claims the championship.':'The winner moves closer to a championship.'}`];return}
+for(let [i,t] of [w,l].entries()){let win=i===0,a=analytics(t.id),diff=a.pf-a.pa,prev=diff-(win?m:-m),e=expectation(t),gapNow=gap(t),prior=gapNow-(win?1:0)+e.target,st=c[i]?.st??t.st,old=c[i]?.prev??0, events=c[i]?.events||[];
+for(let ev of events){if(ev.kind==='Coach dismissed')add('coach',100,`A new chapter for ${t.name}`,ev.body);else if(ev.kind==='Coaching hot seat'||ev.kind==='Pressure easing')add('pressure',86,`${t.name}: ${ev.kind.toLowerCase()}`,ev.body);else if(!['Internal crisis','Dominant breakthrough'].includes(ev.kind))add('event',76,`${t.name}: ${ev.kind}`,ev.body)}
+for(let threshold of [2,4]){if(gapNow>=threshold&&prior<threshold)add('expect',83+threshold,`${t.name} raises the ceiling`,`${t.name} has moved ${threshold} wins ahead of its preseason pace. ${threshold===4?'A much more ambitious campaign is taking shape.':'The original outlook may have been too conservative.'}`);if(gapNow<=-threshold&&prior>-threshold)add('expect',83+threshold,`${t.name} falls short of its own standard`,`The franchise is now at least ${threshold} wins behind its ${e.label.toLowerCase()} pace.`)}
+for(let threshold of [50,100,150,200]){if(diff>=threshold&&prev<threshold)add('differential',80,`${t.name} builds a dominant résumé`,`Its scored-game point differential has crossed +${threshold}, evidence that its record is backed by performance.`);if(diff<=-threshold&&prev>-threshold)add('differential',80,`${t.name} struggles to contain the damage`,`Its scored-game point differential has fallen below -${threshold}. The scale of the defeats is becoming a story in itself.`)}
+if([3,5,7,10,13,15,17].includes(Math.abs(st)))add('streak',Math.abs(st)>=7?92:67,`${t.name} reaches ${Math.abs(st)} straight ${st>0?'wins':'losses'}`,st>0?'The run is becoming a defining feature of the season.':'The franchise is searching for a way to reverse its fortunes.');
+if(win&&old<=-3||!win&&old>=3)add('streakEnd',79,`${t.name}: the streak ends`,`A ${Math.abs(old)}-game ${old>0?'winning':'losing'} run is over.`);
+if(win&&[13,14,15,16,17].includes(t.w))add('greatness',94,`${t.name} reaches ${t.w} victories`,`A remarkable regular season is taking shape at ${t.w}–${t.l}.`);
+let pressure=t.pressure||0, before=b.get(t.id)?.pressure??0; for(let [threshold,label] of [[3,'mounting concern'],[6,'serious unrest'],[9,'critical pressure'],[11,'organizational crisis']])if(pressure>=threshold&&before<threshold)add('turmoil',82+threshold,`${t.name}: ${label}`,`Leadership faces a higher level of scrutiny after this result. The response remains uncertain.`);
+if(a.n>=6&&t.w>t.l&&diff<0)add('record',58,`${t.name}'s record masks a warning`, `A winning record contrasts with a ${diff} point differential in scored games.`);
+}
+if(w.w+w.l>=5&&pct(l)-pct(w)>=.30)add('upset',90,`${w.name} overturns the form book`,`${l.name} entered as the more accomplished side by record, but leaves with a defeat.`);
+if(m>=25)add('margin',81,`${w.name} delivers a statement win`, `A ${m}-point margin leaves ${l.name} with questions to answer.`);
+if(m<=3)add('close',65,pick([`${w.name} survives a narrow contest`,`Fine margins decide the day`],42),`${l.name} falls by just ${m} points; the result alone may exaggerate the gap between the teams.`);
+if(w.d===l.d)add('rival',61,`${w.name} claims divisional bragging rights`,`A head-to-head victory over ${l.name} adds weight to the division race.`);
+add('routine',50,pick([`${w.name} takes care of business`,`${w.name} banks another victory`,`${l.name} comes up short`,`${w.name} wins the week's battle`],71),pick([`The ${g.ws}–${g.ls} result adds another chapter to both campaigns.`,`Neither franchise's longer-term outlook is settled by this result alone.`,`The winner gains ground while the loser turns its attention to the next fixture.`],99));
+let recent=s.results.filter(z=>z!==g&&!z.post&&z.week>=g.week-2&&[z.w,z.l].some(id=>id===g.w||id===g.l));for(let v of candidates)if(recent.some(z=>z.theme37===v.key)&&v.weight<90)v.weight-=25; candidates.sort((a,b)=>b.weight-a.weight);let best=candidates[0];g.theme37=best.key;g.summary=[best.title,best.body];};
+const advance37=advance;advance=function(){advance37()};
+
+
+function race38(){let out={};for(let d of groups.keys()){let ts=displayRank(s.teams.filter(t=>t.d===d));for(let t of ts){let max=t.w+s.schedule.slice(s.week).filter(gs=>gs.some(g=>g.includes(t.id))).length;let conf=s.teams.filter(z=>Math.floor(z.d/4)===Math.floor(t.d/4)&&z.id!==t.id);let divLost=ts.some(z=>z.w>max);let wildLost=conf.filter(z=>z.w>max).length>=s.slots;out[t.id]={leader:ts[0]?.id===t.id,eliminated:divLost&&wildLost,record:t.w+'–'+t.l};if(s.phase==='wild'&&s.week===s.schedule.length){out[t.id].eliminated=!t.seed;out[t.id].leader=!!t.div}}}return out}
+const adv38=advance;advance=function(){let before=race38(),regular=s.phase==='regular'&&!pending;adv38();if(!regular)return;let after=race38();s.raceNotes=[];for(let t of s.teams){let a=after[t.id],b=before[t.id];let notes=[];if(a.leader&&!b.leader)notes.push('New division leader · '+groups[t.d]);if(a.eliminated&&!b.eliminated)notes.push('Eliminated from playoff contention');for(let n of notes){let note={id:t.id,text:n};s.raceNotes.push(note);let g=s.last.find(g=>g.w===t.id||g.l===t.id);if(g)(g.race38??=[]).push(note);}}let stories=s.media38??=[];for(let g of s.last){if(!g.summary||!g.theme37||['routine','generic'].includes(g.theme37))continue;let id=g.summary[0].includes(nm(g.l))?g.l:g.w,key=id+':'+g.theme37;let old=stories.find(z=>z.key===key&&z.season===s.season);let item={key,id,season:s.season,week:s.week,theme:g.theme37,headline:g.summary[0],body:g.summary[1],count:(old?.count||0)+1,previous:old?.headline};if(old)stories.splice(stories.indexOf(old),1);stories.unshift(item)}s.media38=stories.slice(0,160);save();render()};
+const cards38=gameCards;gameCards=function(gs){return gs.map(g=>cards38([g]).replace('</article>',(g.ot?'<span class="signal">Overtime</span>':'')+(g.race38||[]).map(n=>`<p class="signal ${n.text.startsWith('Eliminated')?'negative':'positive'}">${esc(nm(n.id))} · ${esc(n.text)}</p>`).join('')+'</article>')).join('')};
+const render38=render;render=function(){render38();let m=document.getElementById('main');if(pending)return;if(page==='Headquarters'&&s.raceNotes?.length)m.innerHTML=sec('Playoff & division developments',s.raceNotes.map(n=>`<p>${identity(team(n.id))} · ${esc(n.text)}</p>`).join(''))+m.innerHTML;if(page==='Media'){let stories=(s.media38||[]).filter(z=>z.season===s.season);let analysts=[['Marcus Reed',z=>['differential','expect','upset'].includes(z.theme),'The numbers deserve attention; the next few games will test whether the pattern holds.'],['Vince Callahan',z=>['pressure','coach','streakEnd','event'].includes(z.theme),'The pressure is real. Leadership needs an answer, not another excuse.'],['Claire Bennett',z=>['milestone','streak','record'].includes(z.theme),'The historical significance will become clearer as the season unfolds.'],['Daniel Cross',z=>['event','coach','pressure'].includes(z.theme),'The organizational response is worth watching as this situation develops.']];m.innerHTML=sec('The media desk',analysts.map(([name,filter,comment])=>{let z=stories.find(filter);return `<article><small>${name}</small><h3>${z?esc(z.headline):'Watching the league'}</h3><p>${z?esc(z.body)+' '+comment:'No major development in this area yet.'}</p>${z&&z.count>1?`<span class="signal">Returning storyline · ${z.count} reports</span>`:''}</article>`}).join(''))+sec('Developing narratives',stories.slice(0,15).map(z=>`<article>${identity(team(z.id))}<small> Week ${z.week} · ${z.count} reports</small><h3>${esc(z.headline)}</h3><p>${esc(z.body)}</p>${z.count>1?`<p><small>Previously: ${esc(z.previous||'')}</small></p>`:''}</article>`).join('')||'<p>New narratives will emerge as games are played.</p>')+panel('Prediction archive',s.picks.map(p=>`<p>${esc(p.analyst)} · Season ${p.season} · ${esc(nm(p.id))}</p>`).join('')) ;}};
+
+// V3.9: editorial, stakes, expectations and stretch-run presentation. No save-key changes.
+function race39(){let r=race38(),remaining=t=>s.phase==='regular'?s.schedule.slice(s.week).filter(gs=>gs.some(g=>g.includes(t.id))).length:0;for(let t of s.teams){let c=s.teams.filter(x=>Math.floor(x.d/4)===Math.floor(t.d/4)&&x.id!==t.id),div=s.teams.filter(x=>x.d===t.d&&x.id!==t.id),max=x=>x.w+remaining(x);let divClinch=div.every(x=>t.w>max(x));let playoffClinch=c.filter(x=>max(x)>=t.w).length<5;let guaranteedOut=r[t.id].eliminated;let needed=Math.max(0,Math.min(...c.map(x=>max(x)).sort((a,b)=>b-a).slice(5,6).map(v=>v+1-t.w),18));r[t.id]={...r[t.id],divisionClinched:divClinch,clinched:divClinch||playoffClinch,remaining:remaining(t),needed:remaining(t)===0?0:needed,eliminated:guaranteedOut};}return r}
+function status39(t,r){let v=r[t.id];return v.divisionClinched?'★ Division clinched':v.clinched?'✓ Playoff berth clinched':v.eliminated?'✕ Eliminated':v.leader?'Division leader':'In the hunt'}
+function stakes39(g){let r=race39(),out=[];for(let id of [g.w,g.l]){let t=team(id),v=r[id];if(v.divisionClinched)out.push(t.name+' has secured the division');else if(v.clinched)out.push(t.name+' has secured a playoff berth');else if(v.eliminated)out.push(t.name+' is out of the postseason race')}return out}
+const cards39base=gameCards;gameCards=function(gs){return gs.map(g=>{let h=cards39base([g]);let exp=[g.w,g.l].map(id=>{let t=team(id),v=gap(t);return Math.abs(v)>=2?`${t.name}: ${v>0?'+':''}${v.toFixed(1)} wins vs expected pace`:''}).filter(Boolean);let extra=`<div class="game39">${exp.map(v=>`<span class="signal">${esc(v)}</span>`).join('')}${stakes39(g).map(v=>`<p class="positive">${esc(v)}</p>`).join('')}</div>`;return h.replace('</article>',extra+'</article>')}).join('')};
+function expectations39(){let ts=[...s.teams].sort((a,b)=>gap(b)-gap(a));return `<div class="grid">${[['Above expectations',ts.slice(0,5)],['Under pressure',ts.slice(-5).reverse()]].map(([name,arr])=>`<div><h3>${name}</h3>${arr.map(t=>`<p>${identity(t)} · ${t.w}–${t.l} · <strong>${gap(t)>=0?'+':''}${gap(t).toFixed(1)}</strong> vs expected wins · ${esc(expectation(t).label)}</p>`).join('')}</div>`).join('')}</div>`}
+function playoff39(){let r=race39(),left=s.schedule.length-s.week;return [0,1].map(c=>{let ts=displayRank(s.teams.filter(t=>Math.floor(t.d/4)===c));return `<h3>${c?'NFC':'AFC'} — ${left} weeks left</h3>`+table(['Franchise','Record','Status / path'],ts.map(t=>{let v=r[t.id],status=status39(t,r),path=v.clinched?'Position secured':v.eliminated?'Playing for next season':`Max possible ${t.w+v.remaining} wins · ${v.remaining} games left`;return [identity(t),`${t.w}–${t.l}`,`<b class="${v.clinched?'positive':v.eliminated?'muted':''}">${esc(status)}</b><br><small>${esc(path)}</small>`]}))}).join('')+`<p><small>Clinches are mathematically conservative; exact win-and-in and tiebreaker scenarios are not asserted.</small></p>`}
+function media39(){let r=race39(),teams=[...s.teams],ahead=[...teams].sort((a,b)=>gap(b)-gap(a))[0],behind=[...teams].sort((a,b)=>gap(a)-gap(b))[0],rank=[...teams].sort((a,b)=>{let aa=analytics(a.id),bb=analytics(b.id);return (bb.pf-bb.pa)-(aa.pf-aa.pa)}),leader=rank[0],leaderA=analytics(leader.id),lucky=teams.filter(t=>analytics(t.id).n>=5).sort((a,b)=>{let aa=analytics(a.id),bb=analytics(b.id);return (pct(b)-((bb.pf-bb.pa)/Math.max(1,bb.n))/65)-(pct(a)-((aa.pf-aa.pa)/Math.max(1,aa.n))/65)})[0]||leader,under=teams.filter(t=>!r[t.id].eliminated).sort((a,b)=>gap(a)-gap(b))[0]||behind;let quotes=[
+['Marcus Reed','THE DATA DESK',`${leader.name} may be better than its record`,`A ${leaderA.pf-leaderA.pa>=0?'+':''}${leaderA.pf-leaderA.pa} scoring differential over ${leaderA.n} scored games is the evidence. The standings alone cannot explain who is truly dangerous.`],
+['Vince Callahan','THE HOT TAKE',`${behind.name} has run out of excuses`,`A ${gap(behind).toFixed(1)}-win gap against expectations is unacceptable. I am putting ownership on notice — and I do not care how patient it claims to be.`],
+['Claire Bennett','THE LONG VIEW',`${ahead.name}: a season that could change the franchise`,`This club has exceeded its preseason pace by ${gap(ahead).toFixed(1)} wins. One surprising year is a curiosity; the next season will determine whether it was a turning point.`],
+['Daniel Cross','INSIDE THE LEAGUE',`All eyes on ${under.name}'s decision-makers`,`The franchise entered with ${expectation(under).label.toLowerCase()} expectations and now sits ${Math.abs(gap(under)).toFixed(1)} wins off its projected pace. Whether leadership stays the course will matter beyond this season.`],
+['Marty "Mad Dog" Malone','THE CIRCUS',`I am officially starting the ${lucky.name} hype train`,`Are they actually the best team? Probably not. Will I demand a parade if they win next week? Absolutely. This is the kind of reckless optimism football deserves.`]
+];return `<p class="pageintro">Opinions, arguments and developing reputations — not a replay of the scoreboard.</p>`+quotes.map(([author,desk,title,body],i)=>`<article style="border-left-color:${['#72b5da','#e68a70','#b6a1d9','#83b9a5','#e7bd68'][i]}"><small>${desk} · ${esc(author)}</small><h3>${esc(title)}</h3><p>${esc(body)}</p></article>`).join('')+`<details class="panel"><summary>Ongoing coverage & previous headlines</summary>${(s.media38||[]).filter(z=>z.season===s.season).slice(0,12).map(z=>`<p><small>Week ${z.week} · ${esc(z.theme)}</small> ${esc(z.headline)}</p>`).join('')||'<p>Stories will develop during the season.</p>'}</details>`}
+const render39base=render;render=function(){render39base();if(pending)return;let m=document.getElementById('main');if(page==='Media')m.innerHTML=sec('The opinion pages',media39());if(page==='Postseason'&&s.phase==='regular')m.innerHTML=sec('Clinches, seeds & the road in',playoff39())+m.innerHTML;if(page==='Standings')m.innerHTML=sec('Playoff status',playoff39())+m.innerHTML;if(page==='Headquarters')m.innerHTML=sec('Expectation watch',expectations39())+m.innerHTML;document.getElementById('status').innerHTML=document.getElementById('status').innerHTML.replace('v3.8','v3.9');};
+
+
+/* v3.10 — persistent season identities and offseason decisions */
+const seasonArchetypes310=['Hot start','Fading','Fraud watch','Young and hungry','Late surge','Sleeping giant','Resilient','Rebuilding pains','Steady contender','Under pressure'];
+function teamGames310(t){return (s.results||[]).filter(g=>!g.post&&(g.a===t.id||g.b===t.id)).sort((a,b)=>a.week-b.week)}
+function archetype310(t){let gs=teamGames310(t),n=gs.length;if(n<3)return {name:'Unwritten',detail:'The season is still taking shape.'};let first=gs.slice(0,Math.max(3,Math.ceil(n/2))),last=gs.slice(-Math.max(3,Math.ceil(n/2)));let wr=a=>a.filter(g=>g.w===t.id).length/a.length;let early=wr(first),late=wr(last),a=analytics(t.id),diff=(a.pf-a.pa)/Math.max(1,a.n),ex=gap(t);let prev=t.history.at(-1),prevRate=prev?prev.wins/(prev.wins+prev.losses||1):.5;
+if(n>=7&&early>=.7&&late<=.4)return {name:'Fading',detail:'An early surge is giving way to late-season questions.'};
+if(n>=6&&early>=.7&&late>=.5)return {name:'Hot start',detail:'A fast opening has established genuine expectations.'};
+if(n>=7&&early<=.4&&late>=.7)return {name:'Late surge',detail:'A turnaround is changing the postseason conversation.'};
+if(n>=6&&t.w/(t.w+t.l)>.58&&diff<0)return {name:'Fraud watch',detail:'The record looks stronger than the scoring profile.'};
+if(n>=6&&t.w/(t.w+t.l)<.48&&diff>2)return {name:'Sleeping giant',detail:'Underlying scoring suggests better days may be ahead.'};
+if(n>=6&&ex>=1.6&&prevRate<.5)return {name:'Young and hungry',detail:'A former struggler is outperforming its old standard.'};
+if(n>=6&&t.st>=3&&ex>0)return {name:'Resilient',detail:'Recent results are challenging preseason doubts.'};
+if(n>=6&&ex<=-1.8)return {name:'Under pressure',detail:'Results are falling short of preseason ambitions.'};
+if(n>=6&&t.w/(t.w+t.l)<.4)return {name:'Rebuilding pains',detail:'The road back remains difficult.'};
+return {name:'Steady contender',detail:'A developing identity built on week-to-week consistency.'};}
+function legacy310(t){let e=(s.events||[]).filter(z=>z.id===t.id&&z.season>=s.season-2&&/dismiss|turning point|resurgence|regression|breakthrough|tension|pressure|ownership|ultimatum|firestorm|coach/i.test(z.kind));let h=t.history.slice(-2),old=h.map(z=>`S${z.season} ${z.wins}–${z.losses}`).join(' → ');let latest=e[0];return [old?`Recent seasons: ${old}.`:'',latest?`Previously: ${latest.kind.toLowerCase()} (S${latest.season}, W${latest.week}).`:''].filter(Boolean).join(' ')}
+function identityPanel310(){let ts=[...s.teams].map(t=>({t,a:archetype310(t)})).filter(x=>x.a.name!=='Unwritten');let priorities=['Late surge','Fading','Fraud watch','Young and hungry','Hot start','Under pressure','Sleeping giant','Resilient'];ts.sort((a,b)=>priorities.indexOf(a.a.name)<0?1:priorities.indexOf(b.a.name)<0?-1:priorities.indexOf(a.a.name)-priorities.indexOf(b.a.name));return `<p class="pageintro">Season identities emerge from actual results, scoring and expectations — not permanent labels.</p>`+ts.slice(0,8).map(({t,a})=>`<article style="--team:#${colors[t.id]||'657a91'}"><div class="match">${identity(t)}<b>${t.w}–${t.l}</b></div><strong>${esc(a.name)}</strong><p>${esc(a.detail)}</p><small>${esc(legacy310(t))}</small></article>`).join('')}
+const prevAdvance310=advance;
+advance=function(){let before=s.phase,waiting=pending,oldSeason=s.season;prevAdvance310();if(waiting)return;
+if(before==='review'&&s.phase==='owners'){
+let extras=[{label:'Fund a league-wide rebuilding support program',k:'rebuildSupport310',v:true},{label:'Require an ownership review before midseason coaching dismissals',k:'coachReview310',v:true},{label:'Expand independent media access to franchise leadership',k:'mediaAccess310',v:true},{label:'Introduce a league-wide rivalry spotlight initiative',k:'rivalrySpotlight310',v:true},{label:'Introduce an offseason leadership stability fund',k:'stabilityFund310',v:true}];
+let chosen=shuffle(extras).slice(0,2);s.proposals.push(...chosen.map(p=>({...p,yes:s.teams.filter(()=>rnd()<.5).length,done:false})));}
+if(before==='owners'&&s.phase==='development'){
+s.offseason310=s.offseason310||[];let eligible=[...s.teams].sort((a,b)=>gap(a)-gap(b)).slice(0,8);let chosen=shuffle(eligible).slice(0,2+rnd()*2|0);for(let t of chosen){let roll=rnd(),kind,body;
+if(roll<.27){kind='Front office shakeup';body='The general manager has departed after a tense ownership review. A new direction may alter the rebuild.';t.tier=clamp(t.tier+(rnd()<.5?1:-1));}
+else if(roll<.52){kind='Ownership ultimatum';body='Leadership retains its jobs, but ownership has publicly raised expectations for next season.';t.pressure=Math.min(12,(t.pressure||0)+2);}
+else if(roll<.77){kind='Vote of confidence';body='Ownership backs its leadership team despite a difficult campaign. Stability could become an advantage.';t.pressure=Math.max(0,(t.pressure||0)-3);}
+else {kind='Media storm';body='A contentious offseason report has divided supporters and put organizational decisions under the microscope.';t.pressure=Math.min(12,(t.pressure||0)+1);}
+let entry={season:s.season,week:0,id:t.id,kind,body};s.events.unshift(entry);s.offseason310.unshift(entry);s.dev.unshift(`${t.name}: ${kind}. ${body}`);}
+if(s.rebuildSupport310){let t=shuffle([...s.teams].sort((a,b)=>a.w-b.w).slice(0,8))[0];t.tier=clamp(t.tier+1);s.dev.unshift(`${t.name} receives additional development support under the league's rebuilding initiative.`);}
+if(s.stabilityFund310){for(let t of s.teams)t.pressure=Math.max(0,(t.pressure||0)-1);s.dev.unshift('The leadership stability fund has eased pressure on coaching staffs across the league.');}
+}
+if(before==='preseason'&&s.phase==='regular'&&s.season!==oldSeason){s.carryover310=s.carryover310||{};for(let t of s.teams){let last=t.history.at(-1),prev=s.carryover310[t.id]||0;let carry=last?Math.max(-1,Math.min(1,prev*.4+(last.wins-last.losses)/17*.5)):0;t.morale=Math.max(-2,Math.min(2,(t.morale||0)+carry));s.carryover310[t.id]=carry;}s.news.unshift('Preseason outlook: last year’s achievements, collapses and leadership decisions still shape expectations.');}
+if(before==='regular'&&s.phase==='regular'){s.carryover310=s.carryover310||{};for(let t of s.teams)s.carryover310[t.id]=Math.max(-2,Math.min(2,(t.st||0)/4));}
+save();render();};
+const previousPreview310=previewGame;
+previewGame=function(g,featured){let html=previousPreview310(g,featured),x=team(g[0]),y=team(g[1]);let note=[x,y].map(t=>`${t.name}: ${archetype310(t).name}. ${legacy310(t)}`).join(' ');return html.replace('</article>',`<p><small>SEASON CONTEXT · ${esc(note)}</small></p></article>`)};
+const previousRender310=render;
+render=function(){previousRender310();let m=document.getElementById('main');if(!m)return;
+if(page==='Headquarters'&&s.phase==='regular'&&s.week>=3)m.innerHTML=sec('Season identities',identityPanel310())+m.innerHTML;
+if(page==='Media')m.innerHTML=sec('Developing season narratives',identityPanel310())+m.innerHTML;
+if(page==='Commissioner'&&(s.phase==='development'||s.phase==='preseason')&&(s.offseason310||[]).length)m.innerHTML=sec('Offseason drama',eventCards(s.offseason310.filter(e=>e.season===s.season).slice(0,8)))+m.innerHTML;
+let status=document.getElementById('status');status.textContent=status.textContent.replace(/v3\.9|v3\.8/g,'v3.10');};
+
+
+// v3.11 visual hierarchy pass. Read-only presentation; preserves game state and save key.
+const renderBefore311=render;
+render=function(){renderBefore311();const m=document.getElementById('main');if(!m)return;
+const sections=[...m.querySelectorAll(':scope > section')];const find=(q)=>sections.find(x=>(x.querySelector('h2')?.textContent||'').toLowerCase().includes(q));
+const mark=(el,eyebrow,highlight=false)=>{if(!el)return;el.classList.toggle('ux-highlight',highlight);if(!el.querySelector(':scope > .ux-eyebrow'))el.insertAdjacentHTML('afterbegin',`<div class="ux-eyebrow">${eyebrow}</div>`)};
+if(page==='Headquarters'){
+ const identity=find('season identities'),pregame=find('pregame desk'),post=find('postgame desk'),expect=find('expectation watch');
+ // Keep the immediate football action first, with expectations and identities as supporting context.
+ if(identity){const anchor=pregame||post||expect;if(anchor)anchor.after(identity);identity.classList.add('ux-muted');}
+ mark(pregame,'THIS WEEK · FEATURED MATCHUP',true);mark(post,'THE WEEK IN REVIEW',true);mark(expect,'PERFORMANCE VS EXPECTATIONS');mark(identity,'SEASON STORYLINES');
+ const explore=find('explore the league');if(explore)explore.classList.add('ux-muted');
+}
+if(page==='Standings'){mark(find('beyond the record'),'SCORING & PERFORMANCE');}
+if(page==='Schedule'){mark(find('week '),'RESULTS & FIXTURES',true);}
+if(page==='Media'){
+ const identities=find('developing season narratives'),desk=find('football desk');
+ if(desk&&identities)desk.before(identities);
+ mark(identities,'ONGOING STORIES',true);mark(desk,'OPINIONS & ARGUMENTS');mark(find('league developments'),'FRONT OFFICE & LEAGUE');
+}
+if(page==='Franchises')mark(find('franchise profile'),'TEAM AT A GLANCE',true);
+if(page==='Postseason'){mark(sections[0],'THE CHAMPIONSHIP RACE',true);}
+if(page==='History'){mark(sections[0],'LEAGUE ARCHIVES');}
+if(page==='Commissioner'){mark(sections[0],'COMMISSIONER ACTIONS');}
+const status=document.getElementById('status');if(status)status.textContent=status.textContent.replace(/v3\.10/g,'v3.11');
+};
+
+/* v3.12 — information priority: pregame rating, record-first expectations, standings first. */
+const previewBefore312=previewGame;
+function pregameRating312(a,b){
+ const x=team(a),y=team(b),rx=pct(x),ry=pct(y),rival=x.d===y.d;
+ const games=Math.max(x.w+x.l,y.w+y.l),late=games>=10;
+ const quality=Math.round(25*Math.min(rx,ry));
+ const balance=Math.round(20*(1-Math.min(1,Math.abs(rx-ry))));
+ const stakes=late?Math.round(16*Math.max(rx,ry)):Math.round(6*Math.max(rx,ry));
+ const rivalry=rival?12:0;
+ const history=Math.min(8,2*(s.rivals[[a,b].sort((m,n)=>m-n).join(':')]||0));
+ const pressure=Math.min(7,(hotSeat(x)!=='Stable'?3:0)+(hotSeat(y)!=='Stable'?3:0));
+ return Math.max(1,Math.min(100,Math.round(15+quality+balance+stakes+rivalry+history+pressure)));
+}
+previewGame=function(g,featured){
+ let html=previewBefore312(g,featured),score=pregameRating312(g[0],g[1]);
+ let tier=score>=85?'Marquee matchup':score>=70?'High stakes':score>=55?'Worth watching':'Under the radar';
+ let rating=`<div class="pregame-score312"><span><strong>GAME SCORE</strong><small> ${esc(tier)} · pregame interest</small></span><b>${score}<small>/100</small></b></div>`;
+ return html.replace('</article>',rating+'</article>');
+};
+const renderBefore312=render;
+render=function(){
+ renderBefore312();
+ const m=document.getElementById('main');if(!m)return;
+ if(page==='Standings'){
+  const blocks=[...m.querySelectorAll(':scope > section')];
+  const playoff=blocks.find(x=>(x.querySelector('h2')?.textContent||'').toLowerCase().includes('playoff status'));
+  if(playoff){playoff.remove();let details=document.createElement('details');details.className='standings-playoff312';details.innerHTML='<summary>Playoff clinches, eliminations & paths</summary>';details.append(playoff);m.append(details);}
+  const view=m.querySelector('.tabs');if(view)view.classList.add('standings-tabs312');
+ }
+ if(page==='Headquarters'){
+  const blocks=[...m.querySelectorAll(':scope > section')];
+  const expect=blocks.find(x=>(x.querySelector('h2')?.textContent||'').toLowerCase().includes('expectation watch'));
+  if(expect){expect.classList.add('expectations312');for(const row of expect.querySelectorAll('p')){
+   row.innerHTML=row.innerHTML.replace(/(\d+–\d+)\s*·\s*<strong>([^<]+)<\/strong> vs expected wins/g,'<strong class="record312">$1</strong> · <span class="delta312">$2 vs expected</span>');
+  }}
+ }
+ const status=document.getElementById('status');if(status)status.textContent=status.textContent.replace(/v3\.11/g,'v3.13');
+};
+
+/* v3.14 — presentation cleanup; no simulation or storage schema changes. */
+let finalHold314=false;
+const previousShow314=showNext;
+showNext=function(all=false){
+ if(finalHold314){finalHold314=false;pending=false;save();render();return;}
+ const willFinish=pending&&(all||reveal+1>=s.last.length);
+ if(willFinish){reveal=s.last.length;pending=true;finalHold314=true;save();render();return;}
+ previousShow314(all);
+};
+const previousAdvance314=advance;
+advance=function(){if(finalHold314){showNext();return;}previousAdvance314();};
+function score314(g){return pregameRating312(g[0],g[1]);}
+function next314(g){let a=team(g.a),b=team(g.b),rating=score314([g.a,g.b]);return `<div class="next314"><div class="eyebrow314">UP NEXT · GAME ${reveal+1} OF ${s.last.length}</div><div class="nextteams314"><span>${identity(a)} <b>${a.w-(g.w===a.id?1:0)}–${a.l-(g.l===a.id?1:0)}</b></span><span class="versus314">VS</span><span>${identity(b)} <b>${b.w-(g.w===b.id?1:0)}–${b.l-(g.l===b.id?1:0)}</b></span></div><div class="rating314">PREGAME GAME SCORE <strong>${rating}<small>/100</small></strong></div></div>`;}
+function home314(m){
+ const sections=[...m.querySelectorAll(':scope > section')],title=e=>e.querySelector('h2')?.textContent||'';
+ const find=q=>sections.find(e=>title(e).toLowerCase().includes(q));
+ const off=sections.filter(e=>/Championship edition|owners meeting|Offseason development wire|Preseason watchlist/i.test(title(e)));
+ const pre=find('pregame desk'),recap=find('postgame desk'),changes=find('playoff & division developments'),expect=find('expectation watch'),explore=find('explore the league');
+ const latest=find('latest results');
+ const recapCards=latest?[...latest.querySelectorAll('article')].slice(0,3):[];
+ let recapHTML='';
+ if(recap){recapHTML=recap.outerHTML;}
+ else if(s.last?.length&&!pending){recapHTML=sec('Weekly recap',`<p>${s.last.length} games completed in the latest round.</p>`);}
+ let changesHTML='';if(changes){let rows=[...changes.querySelectorAll('p')];changesHTML=sec('Division & playoff movement',rows.slice(0,6).map(x=>x.outerHTML).join('')+(rows.length>6?`<details><summary>${rows.length-6} more updates</summary>${rows.slice(6).map(x=>x.outerHTML).join('')}</details>`:''));}
+ let resultsHTML='';if(latest){let items=[...latest.querySelectorAll('article')];resultsHTML=`<details class="panel"><summary>All weekly results${items.length?' · '+items.length+' games':''}</summary>${latest.outerHTML}</details>`;}
+ let expectationsHTML=expect?`<details class="panel"><summary>Expectations watch</summary>${expect.outerHTML}</details>`:'';
+ let preHTML=pre?.outerHTML||'';
+ m.innerHTML=off.map(e=>e.outerHTML).join('')+preHTML+recapHTML+changesHTML+resultsHTML+expectationsHTML+(explore?.outerHTML||'');
+ for(let e of m.querySelectorAll(':scope > section')){let h=e.querySelector('h2')?.textContent||'';if(/pregame desk|postgame desk|weekly recap/i.test(h))e.classList.add('hero');}
+}
+const renderBefore314=render;
+render=function(){
+ renderBefore314();
+ const m=document.getElementById('main'),status=document.getElementById('status');if(!m)return;
+ if(status){status.textContent=status.textContent.replace(/v3\.(?:8|9|10|11|12|13)\b/g,'v3.14');if(!status.textContent.includes('v3.14'))status.textContent+=' · v3.14';}
+ if(page==='Media'){
+  for(const el of m.querySelectorAll('p,small,h2,h3')){if(el.children.length===0)el.textContent=el.textContent.replace(/\bVersion 3\.8\b|\bv3\.8\b/g,'v3.14');}
+ }
+ if(page!=='Headquarters')return;
+ if(pending){
+  let first=m.querySelector(':scope > section');
+  if(first){let next=s.last[reveal];let p=first.querySelector('p');if(p&&/results revealed/.test(p.textContent))p.remove();
+   let old=first.querySelector('.next314');if(old)old.remove();
+   let progress=first.querySelector('progress');if(progress)progress.insertAdjacentHTML('afterend',next?next314(next):`<div class="next314"><div class="eyebrow314">FINAL GAME OF THE WEEK</div><h3>All ${s.last.length} games are in</h3><p>The final result is now visible below. Review it before closing game day.</p></div>`);
+   if(finalHold314){for(let b of first.querySelectorAll('button')){if(/Reveal next game/.test(b.textContent)){b.textContent='Finish game day';b.setAttribute('onclick','showNext()')}else if(/Reveal remaining/.test(b.textContent))b.remove();}let btn=document.getElementById('advance');if(btn)btn.textContent='Finish game day';}
+  }
+  return;
+ }
+ home314(m);
+};
+
+/* v3.16 — game-day presentation and season identity discoverability. */
+function identityBoard315(){
+ const n=s.week||0,all=s.teams.map(t=>({t,a:archetype310(t)}));
+ const priority={'Fading':0,'Late surge':1,'Fraud watch':2,'Young and hungry':3,'Hot start':4,'Under pressure':5,'Sleeping giant':6,'Resilient':7,'Rebuilding pains':8,'Steady contender':9,'Unwritten':10};
+ all.sort((x,y)=>(priority[x.a.name]??11)-(priority[y.a.name]??11)||y.t.w-x.t.w);
+ return `<p class="pageintro">${n<3?'Identities begin after three completed games. ':''}Every franchise is shown; labels update as the season develops. ${n} week${n===1?'':'s'} completed.</p>`+
+ `<div class="identity-grid315">`+all.map(({t,a})=>`<div class="identity-tile315"><div class="identity-line315">${identity(t)}<strong>${t.w}–${t.l}</strong></div><div class="identity-name315">${esc(a.name)}</div><small>${esc(a.detail)}</small></div>`).join('')+'</div>';
+}
+function previewRecord315(g,id){
+ // Current records already include the week's simulated results; subtract this game's outcome.
+ const t=team(id);return `${Math.max(0,t.w-(g.w===id?1:0))}–${Math.max(0,t.l-(g.l===id?1:0))}`;
+}
+function nextCard315(g){
+ const a=team(g.a),b=team(g.b),rating=Number.isFinite(g.pregame315)?g.pregame315:pregameRating312(g.a,g.b);
+ const archetype=t=>archetype310(t).name;
+ return `<div class="upnext315"><div class="eyebrow315">UP NEXT · GAME ${reveal+1} OF ${s.last.length}</div><div class="versus315"><div>${identity(a)}<strong>${previewRecord315(g,a.id)}</strong><small>${esc(archetype(a))}</small></div><span>VS</span><div>${identity(b)}<strong>${previewRecord315(g,b.id)}</strong><small>${esc(archetype(b))}</small></div></div><div class="score315"><span>PREGAME GAME SCORE</span><strong>${rating}<small>/100</small></strong></div></div>`;
+}
+function perTeam315(g,id){
+ const t=team(id),c=(g.context||[]).find(x=>x.id===id),ex=(g.expectationContext||[]).find(x=>x.id===id);
+ const morale=(g.morale||[])[id===g.w?0:1];let items=[];
+ if(c){if(c.degree>=3)items.push({level:c.degree>=4?3:2,pos:c.st>0,text:`${c.st>0?'Major momentum':'Mounting pressure'} · ${intensity[c.degree]||'Elevated'}`});
+  for(const e of c.events||[])items.push({level:e.degree>=4?3:e.degree>=2?2:1,pos:false,text:`${e.kind}${e.degree>=3?' · '+(intensity[e.degree]||'Major'):''}`});}
+ if(Number.isFinite(morale)&&Math.abs(morale)>=2)items.push({level:Math.abs(morale)>=3.8?3:2,pos:morale>0,text:morale>0?'Strong organizational confidence':'Significant internal unrest'});
+ if(ex&&Math.abs(ex.gap)>=2)items.push({level:Math.abs(ex.gap)>=3.5?3:2,pos:ex.gap>0,text:ex.gap>0?'Far above expectations':'Well below expectations'});
+ if(ex&&ex.seat==='Critical')items.push({level:3,pos:false,text:'Critical coaching pressure'});
+ if((g.race38||[]).some(x=>x.id===id))for(const r of g.race38.filter(x=>x.id===id))items.push({level:3,pos:!/^Eliminated/.test(r.text),text:r.text});
+ items.sort((a,b)=>b.level-a.level);const primary=items.filter(x=>x.level>=2).slice(0,3),secondary=items.filter(x=>x.level<2);
+ return `<div class="teamstate315"><div class="identity-line315">${identity(t)}<b>${id===g.w?'WIN':'LOSS'}</b></div>${primary.length?primary.map(x=>`<div class="state315 ${x.pos?'good315':'bad315'} ${x.level>=3?'major315':''}">${esc(x.text)}</div>`).join(''):`<small class="quiet315">No major organizational development</small>`}${secondary.length?`<details><summary>Minor developments (${secondary.length})</summary>${secondary.map(x=>`<p>${esc(x.text)}</p>`).join('')}</details>`:''}</div>`;
+}
+const cardsBefore315=gameCards;
+gameCards=function(gs){return gs.map(g=>{let html=cardsBefore315([g]);if(!g||g.post)return html;
+ // The detailed state section is the single place for team-specific momentum and pressure.
+ const dom=document.createElement('div');dom.innerHTML=html;const card=dom.querySelector('article');if(!card)return html;
+ card.querySelectorAll('.signals,.game39').forEach(e=>e.remove());
+ [...card.children].filter(e=>e.tagName==='P'&&e.querySelector('small')&&/Coaching:|Ahead of pace|Behind pace|Near expectations/.test(e.textContent)).forEach(e=>e.remove());
+ card.insertAdjacentHTML('beforeend',`<div class="teamstates315">${perTeam315(g,g.w)}${perTeam315(g,g.l)}</div>`);
+ return dom.innerHTML;}).join('')};
+const advanceBefore315=advance;
+advance=function(){const was=s.phase,week=s.week;advanceBefore315();if(was==='regular'&&s.week>week&&s.last?.length){for(const g of s.last)if(!Number.isFinite(g.pregame315))g.pregame315=pregameRating312(g.a,g.b);save();}};
+const renderBefore315=render;
+render=function(){renderBefore315();const m=document.getElementById('main'),status=document.getElementById('status');if(!m)return;
+ if(status)status.textContent=status.textContent.replace(/v3\.14/g,'v3.16');
+ if(page==='Media'){
+  const sections=[...m.querySelectorAll(':scope > section')];let identitySection=sections.find(e=>/Developing season narratives|Season identities/i.test(e.querySelector('h2')?.textContent||''));
+  if(identitySection){identitySection.innerHTML='<h2>Season identities · All 32 franchises</h2>'+identityBoard315();}
+ }
+ if(page!=='Headquarters'||!pending)return;
+ const first=m.querySelector(':scope > section');if(!first)return;
+ const old=first.querySelector('.next314');if(old)old.remove();
+ const current=s.last[reveal];const anchor=first.querySelector('progress');
+ if(current){const markup=nextCard315(current);if(anchor)anchor.insertAdjacentHTML('afterend',markup);else first.insertAdjacentHTML('beforeend',markup);}
+ if(finalHold314){
+  const last=s.last[s.last.length-1];
+  const live=[...m.querySelectorAll(':scope > section')].find(e=>/Live results/i.test(e.querySelector('h2')?.textContent||''));
+  const finalCard=live?.querySelector('article');
+  const finalMarkup=finalCard?.outerHTML||gameCards([last]);
+  const result=`<div class="finale315"><div class="eyebrow315">SUNDAY NIGHT · FINAL WHISTLE</div><h2>That's a wrap on Week ${s.week}</h2><p>All ${s.last.length} games are final. Here's how the last matchup ended.</p><div class="finalresult315">${finalMarkup}</div><div class="finalcall315">The week is in the books. Review the final result, then return to the league's new standings and storylines.</div></div>`;
+  first.insertAdjacentHTML('beforeend',result);
+  // The finale owns the final result; avoid a second copy at the top of the live list.
+  if(finalCard)finalCard.remove();
+ }
+};
+
+
+/* v3.16 — one continuous Sunday Live surface: preview, reveal, results, finale. */
+const renderBefore316=render;
+render=function(){
+ renderBefore316();
+ const m=document.getElementById('main');
+ if(page!=='Headquarters'||!pending||!m)return;
+ const sections=[...m.querySelectorAll(':scope > section')];
+ const live=sections.find(x=>/Sunday live/i.test(x.querySelector('h2')?.textContent||''));
+ const results=sections.find(x=>/Live results/i.test(x.querySelector('h2')?.textContent||''));
+ if(!live||!results)return;
+ const heading=live.querySelector('h2');if(heading)heading.textContent=finalHold314?'Sunday Live · Final Whistle':'Sunday Live · Game Day';
+ const preview=live.querySelector('.upnext315');
+ // Preserve the full preview, including both entering records, identities and Game Score.
+ if(preview){const title=preview.querySelector('.eyebrow315');if(title)title.textContent='ON DECK · GAME '+(reveal+1)+' OF '+s.last.length;}
+ // Keep the live scoreboard in the same card as the upcoming matchup and reveal controls.
+ const list=document.createElement('div');list.className='live-results316';
+ list.innerHTML='<h3 class="live-title316">'+(finalHold314?'The week in review':'Results so far')+'</h3>';
+ while(results.firstChild){const child=results.firstChild;if(child.tagName==='H2'){child.remove();continue;}list.appendChild(child);}
+ live.appendChild(list);results.remove();
+ if(finalHold314){
+  const finale=live.querySelector('.finale315');
+  if(finale){live.insertBefore(finale, list);const leftover=live.querySelector('.next314');if(leftover)leftover.remove();}
+ }
+};
+
+/* v3.17 — swipeable final-week recap; season identities travel with each result. */
+let wrapIndex317=0;
+function wrapCard317(g,i){
+ const a=team(g.a),b=team(g.b);
+ const identityLine=t=>{const arc=archetype310(t);return `<div class="wrap317-team">${identity(t)}<strong>${previewRecord315(g,t.id)}</strong><small>${esc(arc.name)}</small></div>`};
+ const score=Number.isFinite(g.pregame315)?g.pregame315:pregameRating312(g.a,g.b);
+ return `<div class="wrap317-slide" data-wrap-index="${i}"><div class="wrap317-meta"><div class="eyebrow315">GAME ${i+1} OF ${s.last.length} · PREGAME SCORE ${score}/100</div><div class="wrap317-teams">${identityLine(a)}${identityLine(b)}</div></div>${gameCards([g])}</div>`;
+}
+function wrapMove317(delta){const el=document.querySelector('.wrap317-track');if(!el)return;const slides=[...el.children];wrapIndex317=Math.max(0,Math.min(slides.length-1,wrapIndex317+delta));slides[wrapIndex317]?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'});wrapCount317();}
+function wrapCount317(){const count=document.querySelector('.wrap317-count');if(count)count.textContent=`${wrapIndex317+1} / ${s.last.length}`;const prev=document.querySelector('#wrapPrev317'),next=document.querySelector('#wrapNext317');if(prev)prev.disabled=wrapIndex317===0;if(next)next.disabled=wrapIndex317>=s.last.length-1;}
+function wrapScroll317(el){if(!el?.children.length)return;const target=el.children[0].getBoundingClientRect().width+12;wrapIndex317=Math.max(0,Math.min(el.children.length-1,Math.round(el.scrollLeft/target)));wrapCount317();}
+const renderBefore317=render;
+render=function(){
+ renderBefore317();
+ const status=document.getElementById('status');if(status)status.textContent=status.textContent.replace(/v3\.16/g,'v3.17');
+ if(page!=='Headquarters'||!pending||!finalHold314||!s.last?.length)return;
+ const finale=document.querySelector('.finale315');if(!finale)return;
+ const old=finale.querySelector('.wrap317');if(old)old.remove();
+ const wrap=document.createElement('div');wrap.className='wrap317';
+ wrap.innerHTML=`<div class="wrap317-head"><h3>Every game · Final results</h3><div class="wrap317-controls"><button id="wrapPrev317" onclick="wrapMove317(-1)" aria-label="Previous game">‹</button><span class="wrap317-count">1 / ${s.last.length}</span><button id="wrapNext317" onclick="wrapMove317(1)" aria-label="Next game">›</button></div></div><p class="wrap317-note">Swipe left or right to review the week. Each matchup shows entering records, season identities and its original pregame score.</p><div class="wrap317-track" onscroll="wrapScroll317(this)">${s.last.map(wrapCard317).join('')}</div>`;
+ const call=finale.querySelector('.finalcall315');if(call)finale.insertBefore(wrap,call);else finale.appendChild(wrap);
+ wrapIndex317=s.last.length-1;
+ const track=wrap.querySelector('.wrap317-track');
+ // Start at the final matchup, the game that just concluded.
+ track.scrollLeft=wrapIndex317*(track.children[0]?.getBoundingClientRect().width+12||0);
+ wrapCount317();
+ // The carousel is the single recap surface; remove duplicate list underneath.
+ const live=finale.closest('section');const duplicate=live?.querySelector('.live-results316');if(duplicate)duplicate.remove();
+};
+
+
+/* 4.0 — mobile-first presentation; never modifies simulation, save key or historical data. */
+let moreOpen40=false;
+const icons40={Home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',Standings:'<path d="M4 20V11h4v9M10 20V4h4v16M16 20v-7h4v7M2 20h20"/>',Games:'<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7 14h3M14 14h3"/>',Media:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/>',More:'<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>'};
+function icon40(k){return `<svg viewBox="0 0 24 24" aria-hidden="true">${icons40[k]}</svg>`}
+function openMore40(){moreOpen40=!moreOpen40;renderDock40()}
+function navigate40(p){moreOpen40=false;page=p;render();window.scrollTo(0,0)}
+function renderDock40(){const nav=document.getElementById('nav');if(!nav)return;const items=[['Home','Headquarters'],['Standings','Standings'],['Games','Schedule'],['Media','Media']];nav.innerHTML=items.map(([label,p])=>`<button type="button" class="dock40-item ${page===p?'active':''}" onclick="navigate40('${p}')" ${page===p?'aria-current="page"':''}>${icon40(label)}<span>${label}</span></button>`).join('')+`<button type="button" class="dock40-item dock40-more ${moreOpen40||['Franchises','Postseason','History','Commissioner'].includes(page)?'active':''}" onclick="openMore40()" aria-expanded="${moreOpen40}" aria-controls="more40">${icon40('More')}<span>More</span></button>`;
+let menu=document.getElementById('more40');if(!menu){menu=document.createElement('div');menu.id='more40';document.body.appendChild(menu)}menu.hidden=!moreOpen40;menu.innerHTML='<div class="more40-label">EXPLORE THE LEAGUE</div>'+[['Franchises','Franchises'],['Playoffs','Postseason'],['History','History'],['Commissioner','Commissioner']].map(([label,p])=>`<button type="button" class="${page===p?'active':''}" onclick="navigate40('${p}')">${label}</button>`).join('');}
+const renderBefore40=render;
+render=function(){renderBefore40();const m=document.getElementById('main');if(!m)return;
+ const status=document.getElementById('status');if(status)status.textContent=status.textContent.replace(/v3\.\d+|v4\.0/g,'v4.1');
+ // Legacy version labels are presentation-only; do not alter stored universe data.
+ if(page==='Commissioner'||page==='Media'){for(const e of m.querySelectorAll('p,small,h2,h3'))if(e.children.length===0)e.textContent=e.textContent.replace(/(?:Version |v)3\.(?:8|10|11|12|13|14|15|16|17)\b/g,'Version 4.0').replace(/vVersion 4\.0/g,'v4.0')}
+ if(page==='Headquarters'&&!pending){
+  const sections=[...m.querySelectorAll(':scope > section')],heading=e=>e.querySelector('h2')?.textContent||'';
+  const mainEvent=sections.find(e=>/Pregame desk|Featured matchup|Key matchup/i.test(heading(e)));
+  const recap=sections.find(e=>/Weekly recap|Postgame desk|Week in review/i.test(heading(e)));
+  const developments=sections.find(e=>/division|playoff.*developments|race watch/i.test(heading(e)));
+  const identities=sections.filter(e=>/Season identities|Season storylines/i.test(heading(e)));
+  // Put the weekly action first, followed by a brief league-movement summary.
+  if(mainEvent)m.prepend(mainEvent);
+  if(recap){if(mainEvent)mainEvent.after(recap);else m.prepend(recap)}
+  if(developments){const anchor=recap||mainEvent;if(anchor)anchor.after(developments)}
+  identities.forEach(e=>e.remove()); // The full identity board lives on Media.
+  const secondary=[...m.querySelectorAll(':scope > section')].filter(e=>/Expectation watch|League leaders|Explore the league/i.test(heading(e)));
+  for(const e of secondary){if(e.querySelector('details'))continue;const d=document.createElement('details');d.className='mobile40-compact';d.innerHTML='<summary>'+heading(e)+'</summary>';d.append(e);m.append(d)}
+ }
+ if(page==='Media'&&!pending){const identities=[...m.querySelectorAll(':scope > section')].find(e=>/Developing season narratives/i.test(e.querySelector('h2')?.textContent||''));if(identities)m.prepend(identities)}
+ if(page==='Headquarters'&&pending){const live=[...m.querySelectorAll(':scope > section')].find(e=>/Sunday Live/i.test(e.querySelector('h2')?.textContent||''));if(live){live.classList.add('mobile40-live');const wrap=live.querySelector('.wrap317');if(wrap){const note=wrap.querySelector('.wrap317-note');if(note)note.textContent='Swipe between matchups · records, identities and pregame ratings';}}}
+ renderDock40();
+};
+// Dismiss the More sheet without trapping the user in an extra menu.
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&moreOpen40){moreOpen40=false;renderDock40()}});
+
+// v4.1: screen-level discovery controls. Only filters DOM; does not touch simulation/save data.
+const renderBefore41=render;
+const browse41={};
+function applyBrowse41(){const m=document.getElementById('main');if(!m)return;const q=(browse41[page]||'').trim().toLowerCase();m.querySelectorAll('[data-browse41]').forEach(el=>{el.hidden=!!q&&!el.textContent.toLowerCase().includes(q)});const count=m.querySelector('#browse41-count');if(count){const items=[...m.querySelectorAll('[data-browse41]')];count.textContent=q?`${items.filter(x=>!x.hidden).length} of ${items.length} matching`:''}}
+function searchBrowse41(v){browse41[page]=v;applyBrowse41()}
+function toggleBrowse41(expand){const m=document.getElementById('main');if(!m)return;m.querySelectorAll('details.browse41-fold').forEach(d=>d.open=expand)}
+render=function(){renderBefore41();const m=document.getElementById('main');if(!m)return;
+const searchable=['Standings','Schedule','Media','Franchises','Postseason','History'];
+if(!searchable.includes(page)||pending&&page==='Headquarters')return;
+const sections=[...m.querySelectorAll(':scope > section')];
+// Keep the primary standings tables visible, but fold secondary sections elsewhere.
+for(const section of sections){const heading=section.querySelector('h2')?.textContent||'';if(page==='Standings'&&/standings|records|division/i.test(heading))continue;if(page==='Schedule'&&/week|games/i.test(heading))continue;
+if(page==='Media'||page==='History'||page==='Postseason'){const details=document.createElement('details');details.className='browse41-fold';details.open=/Media/.test(page)&&/developing|narrative|desk/i.test(heading);const summary=document.createElement('summary');summary.textContent=heading||'More detail';details.append(summary,section);m.append(details)}}
+// Search individual rows/cards so the user can find teams or stories without scanning the page.
+const rows=[...m.querySelectorAll('table tr')].filter(x=>x.querySelector('td'));
+const cards=[...m.querySelectorAll('.card,.event,.story,.game-card,.gamecard')];
+const targets=rows.length?rows:cards.length?cards:sections;
+for(const el of targets)el.setAttribute('data-browse41','');
+const tools=document.createElement('div');tools.className='browse41-tools';tools.innerHTML=`<label for="browse41-input">Find ${page==='Media'?'a team or storyline':'a team, game or detail'}</label><input id="browse41-input" type="search" placeholder="Search ${page.toLowerCase()}…" autocomplete="off"><span id="browse41-count" aria-live="polite"></span><div class="browse41-actions"><button type="button" onclick="toggleBrowse41(true)">Expand all</button><button type="button" onclick="toggleBrowse41(false)">Collapse all</button></div>`;
+m.prepend(tools);const input=tools.querySelector('input');input.value=browse41[page]||'';input.addEventListener('input',e=>searchBrowse41(e.target.value));applyBrowse41();
+};
+
+
+/* 4.2 — evolving season identities. Descriptive only: no RNG, no impact on outcomes. */
+const oldArchetype42=archetype310;
+function identity42(t){
+ const gs=teamGames310(t),n=gs.length, wins=gs.filter(g=>g.w===t.id).length,rate=n?wins/n:0;
+ if(n<3)return {name:'Unwritten',detail:'Not enough games to establish a pattern.',story:null};
+ const last=gs.slice(-Math.min(5,n)),first=gs.slice(0,Math.min(5,n));
+ const wr=arr=>arr.length?arr.filter(g=>g.w===t.id).length/arr.length:0;
+ const recent=wr(last),opening=wr(first),a=analytics(t.id),margin=(a.pf-a.pa)/Math.max(1,a.n),expect=gap(t);
+ const previous=t.history.at(-1),prevRate=previous?previous.wins/Math.max(1,previous.wins+previous.losses):.5;
+ let name,detail;
+ // Specific established trajectories take precedence over generic win-loss descriptions.
+ if(n>=8&&opening>=.7&&recent<=.4){name='Fading';detail='A strong opening has given way to a difficult stretch.'}
+ else if(n>=8&&opening<=.4&&recent>=.7){name='Late surge';detail='Recent wins have transformed the season’s trajectory.'}
+ else if(n>=6&&rate>.58&&margin<0){name='Fraud watch';detail='A strong record is not supported by the scoring margin.'}
+ else if(n>=6&&rate<.48&&margin>2){name='Sleeping giant';detail='The scoring profile is better than the record suggests.'}
+ else if(n>=6&&expect>=1.6&&prevRate<.5){name='Young and hungry';detail='A franchise is outperforming its recent history.'}
+ else if(n>=6&&expect<=-1.8){name='Under pressure';detail='Results are falling short of preseason expectations.'}
+ else if(n>=6&&rate<.4){name='Rebuilding pains';detail='A difficult season is testing the organization.'}
+ else if(n>=6&&t.st>=3&&expect>0){name='Resilient';detail='A winning run is answering preseason doubts.'}
+ else if(n>=6&&opening>=.7&&rate>=.58){name='Hot start';detail='An early burst has become a credible season.'}
+ else if(n>=3&&rate>=.75){name='Fast out of the gate';detail='The opening results have raised expectations.'}
+ else if(n>=3&&rate<=.25){name='Searching for answers';detail='An early struggle is putting the season under scrutiny.'}
+ else if(n>=3&&expect>=1.1){name='Surprise package';detail='Early results are beating the preseason forecast.'}
+ else if(n>=3&&expect<=-1.1){name='Slow out of the gate';detail='The team has not matched its preseason ambitions.'}
+ else if(n>=6&&rate>=.58){name='Steady contender';detail='A consistent winning record has established credibility.'}
+ else {name='Finding its footing';detail='The season is still developing without a defining trend.'}
+ // A second label is never forced. These are situational storylines, not another identity.
+ let story=null;
+ if(n>=12){
+  const remaining=Math.max(0,17-n), eliminated=!!t.eliminated||!!t.elim||!!t.out;
+  if(eliminated&&recent>=.6)story='Playing spoiler';
+  else if(eliminated&&expect<=-1.8)story='Lost season';
+  else if(rate>=.76&&margin>=5&&recent>=.6)story='Team to beat';
+  else if(rate>=.55&&recent>=.8&&margin>0)story='Peaking at the right time';
+  else if(opening>=.7&&recent<=.4)story='Running out of gas';
+  else if(prevRate<.5&&expect>=2&&rate>=.5&&!eliminated)story='Cinderella run';
+  else if(rate>=.58&&margin<0)story='Pretender or contender?';
+  // Avoid inventing a mathematically precise elimination scenario from incomplete tiebreaker data.
+  if(story==='Playing spoiler'&&!eliminated)story=null;
+  if(story==='Lost season'&&!eliminated)story=null;
+  if(story==='Running out of gas'&&name!=='Fading'&&name!=='Under pressure')story=null;
+  if(story==='Peaking at the right time'&&['Fading','Fraud watch','Under pressure','Rebuilding pains'].includes(name))story=null;
+  if(story==='Team to beat'&&['Fraud watch','Fading','Under pressure'].includes(name))story=null;
+  if(story==='Cinderella run'&&['Fading','Fraud watch','Under pressure','Rebuilding pains'].includes(name))story=null;
+ }
+ return {name,detail,story};
+}
+archetype310=identity42;
+function identitySnapshot42(){
+ if(!s?.teams)return false;
+ s.identity42=s.identity42||{season:s.season,teams:{},events:[]};
+ if(s.identity42.season!==s.season)s.identity42={season:s.season,teams:{},events:[]};
+ let changed=false;
+ for(const t of s.teams){
+  const current=identity42(t),n=teamGames310(t).length,old=s.identity42.teams[t.id];
+  if(old&&old.name!==current.name&&old.name!=='Unwritten'&&current.name!=='Unwritten'){
+   const ev={season:s.season,week:n,id:t.id,from:old.name,to:current.name,kind:'Identity shift'};
+   if(!s.identity42.events.some(x=>x.id===ev.id&&x.week===ev.week&&x.to===ev.to)){
+    s.identity42.events.unshift(ev);s.identity42.events=s.identity42.events.slice(0,120);changed=true;
+   }
+  }
+  if(!old||old.name!==current.name||old.story!==current.story||old.games!==n){s.identity42.teams[t.id]={name:current.name,story:current.story,games:n};changed=true;}
+ }
+ return changed;
+}
+function identityPanel310(){
+ const ts=[...s.teams].map(t=>({t,a:identity42(t)}));
+ const order=['Fading','Late surge','Fraud watch','Young and hungry','Under pressure','Sleeping giant','Hot start','Resilient','Fast out of the gate','Searching for answers','Surprise package','Slow out of the gate','Rebuilding pains','Steady contender','Finding its footing','Unwritten'];
+ ts.sort((x,y)=>order.indexOf(x.a.name)-order.indexOf(y.a.name)||y.t.w-x.t.w);
+ return `<p class="pageintro">All ${ts.length} franchises · identities begin after three games and evolve with results. Stretch-run context appears from game 12 when warranted.</p><div class="identity42-grid">`+ts.map(({t,a})=>`<article class="identity42-card"><div class="identity42-top">${identity(t)}<b>${t.w}–${t.l}</b></div><strong>${esc(a.name)}</strong><p>${esc(a.detail)}</p>${a.story?`<small class="identity42-story">STRETCH RUN · ${esc(a.story)}</small>`:''}</article>`).join('')+'</div>';
+}
+function identityNews42(){
+ const events=(s.identity42?.season===s.season?s.identity42.events:[])||[];
+ if(!events.length)return '<p class="pageintro">Identity changes will be tracked as teams establish and reshape their seasons.</p>';
+ return events.slice(0,12).map(e=>{const t=team(e.id);return `<article class="identity42-change"><small>WEEK ${e.week} · IDENTITY SHIFT</small><div><strong>${t?esc(t.name):'Franchise'}</strong><p>${esc(e.from)} → <b>${esc(e.to)}</b></p></div></article>`}).join('');
+}
+const advanceBefore42=advance;
+advance=function(){const oldSeason=s.season;advanceBefore42();if(s.season!==oldSeason||s.phase==='regular'||s.phase==='wild'||s.phase==='review'){if(identitySnapshot42())save();}render();};
+const renderBefore42=render;
+render=function(){renderBefore42();
+ const m=document.getElementById('main');if(!m)return;
+ const status=document.getElementById('status');if(status)status.textContent=status.textContent.replace(/v4\.1|v4\.0|v3\.\d+/g,'v4.2');
+ if(page==='Media'){
+  const old=[...m.querySelectorAll('section')].filter(e=>/Developing season narratives|Season identities/i.test(e.querySelector('h2')?.textContent||''));
+  old.forEach(e=>e.remove());
+  const board=document.createElement('section');board.className='identity42-board';board.innerHTML='<h2>Season identities</h2>'+identityPanel310();
+  const changes=document.createElement('section');changes.className='identity42-transitions';changes.innerHTML='<h2>Identity shifts</h2>'+identityNews42();
+  const tools=m.querySelector('.browse41-tools');if(tools){tools.after(changes);changes.after(board)}else m.prepend(changes,board);
+ }
+ // Add a concise storyline to Sunday Live; never duplicate a second prominent identity.
+ if(page==='Headquarters'&&pending){
+  const preview=m.querySelector('.next314,.next315,.up-next316');
+  if(preview&&!preview.querySelector('.identity42-context')){
+   const ids=(s.schedule?.[s.week-1]||[]).find(g=>{const a=Array.isArray(g)?g[0]:g.a,b=Array.isArray(g)?g[1]:g.b;return preview.textContent.includes(team(a)?.name||'~')&&preview.textContent.includes(team(b)?.name||'~')});
+   if(ids){const a=Array.isArray(ids)?ids[0]:ids.a,b=Array.isArray(ids)?ids[1]:ids.b;const note=[a,b].map(id=>{const t=team(id),x=identity42(t);return x.story?`${t.name}: ${x.story}`:''}).filter(Boolean);if(note.length){const el=document.createElement('p');el.className='identity42-context';el.textContent=note.join(' · ');preview.append(el)}}
+  }
+ }
+};
+// Initialize existing saves without changing the original save key or simulated outcomes.
+if(identitySnapshot42())save();
+
+
+/* v4.3 — non-random, display-only conference seeding and persistent appearance. */
+const originalIdentity43=identity;
+function seeds43(){
+ const out=new Map();
+ if(!s?.teams)return out;
+ const finalized=s.phase!=='regular'&&s.teams.some(t=>t.seed>0);
+ for(let c=0;c<2;c++){
+  const conference=s.teams.filter(t=>Math.floor(t.d/4)===c);
+  let ordered=[];
+  if(finalized){ordered=conference.filter(t=>t.seed>0).sort((a,b)=>a.seed-b.seed)}
+  else {
+   const champions=[];
+   for(let d=c*4;d<c*4+4;d++){
+    const division=displayRank(conference.filter(t=>t.d===d));
+    if(division.length)champions.push(division[0]);
+   }
+   const championIds=new Set(champions.map(t=>t.id));
+   ordered=[...displayRank(champions),...displayRank(conference.filter(t=>!championIds.has(t.id)))].slice(0,s.slots||6);
+  }
+  ordered.forEach((t,i)=>out.set(t.id,{n:finalized?t.seed:i+1,c:c?'NFC':'AFC',final:finalized}));
+ }
+ return out;
+}
+identity=function(t){
+ const base=originalIdentity43(t);
+ if(!t||!s?.teams)return base;
+ const seed=seeds43().get(t.id);
+ return base+(seed?`<span class="seed43 ${seed.final?'final':''}" title="${seed.final?'Final':'Projected'} ${seed.c} playoff seed">${seed.final?'':'~'}${seed.c} #${seed.n}</span>`:'');
+};
+let theme43='dark';
+try{theme43=localStorage.getItem('commissioner-theme43')==='light'?'light':'dark'}catch(e){}
+function applyTheme43(){document.documentElement.dataset.theme43=theme43;const b=document.getElementById('theme43-toggle');if(b){b.textContent=theme43==='dark'?'☀ Light mode':'☾ Dark mode';b.setAttribute('aria-label','Switch to '+(theme43==='dark'?'light':'dark')+' mode')}}
+function toggleTheme43(){theme43=theme43==='dark'?'light':'dark';try{localStorage.setItem('commissioner-theme43',theme43)}catch(e){}applyTheme43()}
+applyTheme43();
+const renderBefore43=render;
+render=function(){
+ renderBefore43();
+ const status=document.getElementById('status');if(status)status.textContent=status.textContent.replace(/v4\.2|v4\.1|v3\.\d+/g,'v4.3');
+ const header=document.querySelector('header');
+ if(header&&!document.getElementById('theme43-toggle')){
+  const b=document.createElement('button');b.id='theme43-toggle';b.className='theme43';b.type='button';b.onclick=toggleTheme43;
+  const statusEl=document.getElementById('status');if(statusEl)statusEl.before(b);else header.append(b);
+ }
+ applyTheme43();
+};
+/* v4.3.1 navigation repair: independent click handling and visible startup diagnostics. */
+(function(){
+ const nav=document.getElementById('nav');
+ const destinations={Home:'Headquarters',Standings:'Standings',Games:'Schedule',Media:'Media',Franchises:'Franchises',Playoffs:'Postseason',History:'History',Commissioner:'Commissioner'};
+ function warning(message){let el=document.getElementById('navigation-warning');if(!el){el=document.createElement('p');el.id='navigation-warning';el.setAttribute('role','alert');el.style.cssText='padding:12px;margin:10px 16px;background:#512b32;color:white;border:1px solid #f2a8a8;border-radius:8px';document.querySelector('header').append(el)}el.textContent='Navigation error: '+message+' (Your saved universe has not been changed.)'}
+ function resilientGo(target){try{moreOpen40=false;page=target;render();window.scrollTo(0,0)}catch(e){warning(e&&e.message||String(e));try{renderDock40()}catch(_){}}}
+ // Delegate clicks from the permanent nav container rather than relying on
+ // inline onclick attributes in buttons that are rebuilt on each render.
+ nav.addEventListener('click',function(event){
+  const button=event.target.closest('button');if(!button||!nav.contains(button))return;
+  event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
+  if(button.classList.contains('dock40-more')){try{moreOpen40=!moreOpen40;renderDock40()}catch(e){warning(e.message)}return}
+  const label=button.textContent.trim();if(destinations[label])resilientGo(destinations[label]);
+ },true);
+ document.addEventListener('click',function(event){const menu=event.target.closest('#more40');if(!menu)return;const button=event.target.closest('button');if(!button)return;event.preventDefault();event.stopPropagation();const target=destinations[button.textContent.trim()];if(target)resilientGo(target)},true);
+ try{renderDock40()}catch(e){warning(e.message)}
+})();
+render();
+</script></body></html>
